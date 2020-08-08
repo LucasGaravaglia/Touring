@@ -1,5 +1,8 @@
 {
   "expo": {
+    "facebookScheme":"fb296767771554939",
+    "facebookAppId": "296767771554939", 
+    "facebookDisplayName": "Touring",
     "name": "Touring",
     "slug": "Touring",
     "version": "1.0.0",
@@ -21,6 +24,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.touring.Touring"
     }
   }
 }
