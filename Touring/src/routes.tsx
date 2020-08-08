@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar'
 
-import FindCity from './pages/client/FindCity';
+import FindCity from './pages/client/UserItinerary';
 import UserRegister from './pages/client/UserRegister';
 
 import Login from './pages/Login';
