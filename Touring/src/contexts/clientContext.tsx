@@ -38,39 +38,41 @@ const ClientProvider: React.FC = ({ children }) => {
     function checkEmail(userEmail: string){
         if(userEmail.split("@").length === 2 && userEmail !== '')
             return true
-        throw "Invalid Email"
+        return false
     }
 
     function checkCpf(userCpf: string){
         if(userCpf.length === 11)
             return true
-        throw "CPF inválido"
+        return false
     }
 
-    function checkName(userName: string){
-        if(userName !== '')
+    function checkName(name: string){
+        if(name !== '')
             return true
-        throw "Nome inválido"
+        return false
     }
 
     function checkCNPJ(cnpj: string){
         if(cnpj.length === 14)
             return true
-        throw "CNPJ inválido."
+        return false
     }
 
     function registerUser(userAddress: string, userCpf: string){
-        checkCpf(userCpf)
-        setUserAddress(userAddress)
-        setUserCpf(userCpf)
-
-        setLoading(true)
-        Axios.post("/",{ userCpf, userAddress }).then( (response) => {
-            Alert.alert("Registrado com sucesso.")
-        }).catch( (err) => {
-            throw err
-        })
-        setLoading(false)
+        if(checkCpf(userCpf)){
+            setUserAddress(userAddress)
+            setUserCpf(userCpf)
+    
+            setLoading(true)
+            Axios.post("/",{ userCpf, userAddress }).then( (response) => {
+                Alert.alert("Registrado com sucesso.")
+            }).catch( (err) => {
+                throw err
+            })
+            setLoading(false)
+        }else
+            throw "CPF inválido."
     }
 
     function updateUserProfileImage(imageUrl: string){
@@ -86,16 +88,18 @@ const ClientProvider: React.FC = ({ children }) => {
     }
 
     function updateUserEmail(userEmail: string){
-        checkEmail(userEmail)
-        setUserEmail(userEmail)
+        if(checkEmail(userEmail)){
+            setUserEmail(userEmail)
 
-        setLoading(true)
-        Axios.post("/", { userEmail }).then( (response) => {
-            Alert.alert("Email alterado com sucesso.")
-        }).catch( (err) => {
-            throw err
-        })
-        setLoading(false)
+            setLoading(true)
+            Axios.post("/", { userEmail }).then( (response) => {
+                Alert.alert("Email alterado com sucesso.")
+            }).catch( (err) => {
+                throw err
+            })
+            setLoading(false)
+        }else
+            throw "Email inválido."
     }
 
     function updateUserPhone(userPhone: string){
@@ -123,22 +127,26 @@ const ClientProvider: React.FC = ({ children }) => {
     }
 
     function updateUserName(userName: string){
-        checkName(userName)
-        setUserName(userName)
+        if(checkName(userName)){
+            setUserName(userName)
 
-        setLoading(true)
-        Axios.post("/", { userName }).then( (response) => {
-            Alert.alert("Nome alterado com sucesso.")
-        }).catch( (err) => {
-            throw err
-        })
-        setLoading(false)
+            setLoading(true)
+            Axios.post("/", { userName }).then( (response) => {
+                Alert.alert("Nome alterado com sucesso.")
+            }).catch( (err) => {
+                throw err
+            })
+            setLoading(false)
+        }
     }
 
     function registerCompany(companyName: string, companyAddress: string, companyCNJP: string, companyDescription: string, companyEmail: string){
-        checkEmail(companyEmail)
-        checkName(companyName)
-        checkCNPJ(companyCNJP)
+        if(!checkEmail(companyEmail))
+            throw "Email inválido."
+        if(!checkName(companyName))
+            throw "Nome inválido."
+        if(!checkCNPJ(companyCNJP))
+            throw "CNPJ inválido."
 
         setLoading(true)
         Axios.post("/", { companyName, companyAddress, companyCNJP, companyDescription, companyEmail }).then( (response) => {
