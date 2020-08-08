@@ -42,18 +42,14 @@ const MainProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<UserProps>();
 
   async function signOut(){
-    setLoading(true);
     await AsyncStorage.removeItem('TouringUserCredential');
     setAuthenticated(false);
-    setLoading(false);
   }
 
   async function auth(user: UserProps){
-    setLoading(true);
     const userString = JSON.stringify(user);
     await AsyncStorage.setItem('TouringUserCredential', userString);
     setAuthenticated(true);
-    setLoading(false);
   }
 
   async function facebookLogin() {
@@ -80,7 +76,7 @@ const MainProvider: React.FC = ({ children }) => {
             token: response.token,
             tokenType: 'Facebook'
           }  
-          auth(user);
+          await auth(user);
         }else{
           throw new Error("Cant get data from Facebook"); 
         }
@@ -110,7 +106,7 @@ const MainProvider: React.FC = ({ children }) => {
       token: (response as GoogleResponse).accessToken,
       tokenType: 'Google'
     }
-    auth(user)
+    await auth(user)
     setLoading(false);
   }
 
@@ -120,10 +116,9 @@ const MainProvider: React.FC = ({ children }) => {
     const stringUserCredential = await AsyncStorage.getItem('TouringUserCredential');
     if(stringUserCredential){      
       const user = JSON.parse(stringUserCredential);
-      setUser(user);
-      setAuthenticated(true);
+      await auth(user);
     }
-    setLoading(false);    
+    setLoading(false);
   }
 
   useEffect(() => {
