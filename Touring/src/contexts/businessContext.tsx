@@ -15,24 +15,27 @@ const BusinessProvider: React.FC = ({ children }) => {
     const [ loading, setLoading ] = useState(false)
 
     function checkName(name: string){
-        if(name !== '')
-            return true
-        return false
+        if(name === '')
+            throw "Nome inválido."
     }
 
-    function registerTouristSpot(touristSpotName: string, touristSpotAddress: string, touristSpotDescription: string, touristSpotSchedule){
-        if(checkName(touristSpotName)){
-            setLoading(true)
-            Axios.post("/", { touristSpotName, touristSpotAddress, touristSpotDescription, touristSpotSchedule }).then( (response) => {
-                Alert.alert("Ponto turístico registrado com sucesso.")
-            }).catch( (err) => {
-                throw err
-            })
-            setLoading(false)
+    function sendToDatabase(route,data,successMessage){
+      setLoading(true)
+      Axios.post("/"+route,data).then( ( response ) => {
+          Alert.alert(successMessage)
+      }).catch( ( err ) => {
+          throw err
+      })
+      setLoading(false)
+  }
 
-        }else{
-            throw "Nome inválido"
-        }
+    function registerTouristSpot(touristSpotName: string, touristSpotAddress: string, touristSpotDescription: string, touristSpotSchedule){
+      try{
+        checkName(touristSpotName)
+        sendToDatabase("",{ touristSpotName, touristSpotAddress, touristSpotDescription, touristSpotSchedule },"Ponto turístico registrado com sucesso.")
+      } catch(err) {
+        throw err
+      }
     }
 
   return (
