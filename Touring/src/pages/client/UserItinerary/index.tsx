@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity, Keyboard, TouchableWithoutFeedback} from 'react-native';
 import Constants from 'expo-constants';
@@ -6,6 +6,8 @@ import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsi
 import { Feather } from '@expo/vector-icons';
 
 import testData from '../../../../data/pontosTuristicos';
+
+import { AuthContext } from '../../../contexts/authContext';
 
 interface ItemProps  {
   adress: string,
@@ -22,6 +24,8 @@ interface RenderItem {
 }
 
 const UserItinerary = () => {
+
+  const { signOut } = useContext(AuthContext);
   
   const [ locationToShow, setlocationToShow] = useState({
     latitude: testData[0].latitude,
@@ -38,6 +42,8 @@ const UserItinerary = () => {
     })
   } 
 
+  
+
 
   return (
     <View style={styles.container}>
@@ -45,7 +51,7 @@ const UserItinerary = () => {
       <View style={styles.headerContainer}>
         <View style={styles.header}>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={signOut}>
             <Feather style={styles.menuIcon} name="arrow-left" size={40} color='#FFF'/>
           </TouchableOpacity>            
 
