@@ -11,7 +11,7 @@ interface ClientContextData {
     loading: boolean,
     userProfileImage: string,
     userPhone: string,
-    registerUser: (userEmail: string, userCpf: string) => void,
+    registerUser: (userAddress: string, userCpf: string, userPhone: string) => void,
     updateUserProfileImage: (imageUrl: string) => void,
     updateUserEmail: (userEmail: string) => void,
     updateUserPhone: (userPhone: string) => void,
@@ -35,6 +35,10 @@ const ClientProvider: React.FC = ({ children }) => {
 
     const [ loading, setLoading ] = useState(false)
 
+    function isNumber(number: string){
+        return number.length === 1 && !isNaN(parseInt(number)) && !isNaN(parseInt(number) - 0)
+    }
+
     function checkEmail(userEmail: string){
         if(userEmail.split("@").length !== 2 && userEmail === '')
             throw "Email inválido"
@@ -43,6 +47,11 @@ const ClientProvider: React.FC = ({ children }) => {
     function checkCpf(userCpf: string){
         if(userCpf.length !== 11)
             throw "CPF inválido."
+        for(let i = 0; i < userCpf.length; i++){
+            if(!isNumber(userCpf.charAt(i))){
+                throw "CPF inválido."
+            }
+        }
     }
 
     function checkName(name: string){
@@ -55,22 +64,33 @@ const ClientProvider: React.FC = ({ children }) => {
             throw "CNPJ inválido."
     }
 
+    function checkPhoneNumber(number: string){
+        if(number.length === 0)
+            throw "Telefone inválido."
+        for(let i = 0; i < number.length; i++){
+            if(!isNumber(number.charAt(i)) && number.charAt(i) !== ' ')
+                throw "Telefone inválido."
+        }
+    }
+
     function sendToDatabase(route,data,successMessage){
         setLoading(true)
         Axios.post("/"+route,data).then( ( response ) => {
             Alert.alert(successMessage)
-        }).catch( ( err ) => {
-            throw err
+        }).catch( err => {
+            throw "Não foi possível conectar-se com o banco de dados."
         })
         setLoading(false)
     }
 
-    function registerUser(userAddress: string, userCpf: string){
+    function registerUser(userAddress: string, userCpf: string, userPhone: string){
         try{
             checkCpf(userCpf)
+            checkPhoneNumber(userPhone)
             setUserAddress(userAddress)
             setUserCpf(userCpf)
-            sendToDatabase("",{ userCpf, userAddress },"Registrado com sucesso.")
+            setUserPhone(userPhone)
+            sendToDatabase("",{ userCpf, userAddress, userPhone },"Registrado com sucesso.")
         }catch(err) {
             throw err
         }
@@ -97,6 +117,7 @@ const ClientProvider: React.FC = ({ children }) => {
 
     function updateUserPhone(userPhone: string){
         try{
+            checkPhoneNumber(userPhone)
             setUserPhone(userPhone)
             sendToDatabase("",{ userPhone },"Telefone alterado com sucesso.")
         } catch(err) {
