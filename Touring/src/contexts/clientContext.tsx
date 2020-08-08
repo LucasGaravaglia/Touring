@@ -18,7 +18,7 @@ interface ClientContextData {
     updateAddress: (userAddress: string) => void,
     updateUserName: (userName: string) => void,
     registerCompany: (companyName: string, companyAddress: string,
-        companyCNJP: string, companyDescription: string, companyEmail: string)
+        companyCNPJ: string, companyDescription: string, companyEmail: string)
         => void
 }
 
@@ -140,16 +140,16 @@ const ClientProvider: React.FC = ({ children }) => {
         }
     }
 
-    function registerCompany(companyName: string, companyAddress: string, companyCNJP: string, companyDescription: string, companyEmail: string){
+    function registerCompany(companyName: string, companyAddress: string, companyCNPJ: string, companyDescription: string, companyEmail: string){
         if(!checkEmail(companyEmail))
             throw "Email inválido."
         if(!checkName(companyName))
             throw "Nome inválido."
-        if(!checkCNPJ(companyCNJP))
+        if(!checkCNPJ(companyCNPJ))
             throw "CNPJ inválido."
 
         setLoading(true)
-        Axios.post("/", { companyName, companyAddress, companyCNJP, companyDescription, companyEmail }).then( (response) => {
+        Axios.post("/", { companyName, companyAddress, companyCNPJ, companyDescription, companyEmail }).then( (response) => {
             Alert.alert("Empresa cadastrada com sucesso.")
         }).catch( (err) => {
             throw err
