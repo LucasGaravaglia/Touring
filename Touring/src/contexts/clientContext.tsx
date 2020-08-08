@@ -11,6 +11,7 @@ interface ClientContextData {
     loading: boolean,
     userProfileImage: string,
     userPhone: string,
+    token?: string,
     registerUser: (userAddress: string, userCpf: string, userPhone: string) => void,
     updateUserProfileImage: (imageUrl: string) => void,
     updateUserEmail: (userEmail: string) => void,
@@ -32,6 +33,7 @@ const ClientProvider: React.FC = ({ children }) => {
     const [ userProfileImage, setUserProfileImage] = useState('')
     const [ userEmail, setUserEmail ] = useState('')
     const [ userName, setUserName ] = useState('')
+    const [ token, setToken ] = useState('')
 
     const [ loading, setLoading ] = useState(false)
 
@@ -90,7 +92,13 @@ const ClientProvider: React.FC = ({ children }) => {
             setUserAddress(userAddress)
             setUserCpf(userCpf)
             setUserPhone(userPhone)
-            sendToDatabase("",{ userCpf, userAddress, userPhone },"Registrado com sucesso.")
+            let post_data = {
+                "token": token,
+                "cpf": userCpf,
+                "user_address": userAddress,
+                "phone": userPhone
+            }
+            sendToDatabase("",post_data,"Registrado com sucesso.")
         }catch(err) {
             throw err
         }
