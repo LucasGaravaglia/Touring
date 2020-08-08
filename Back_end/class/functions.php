@@ -12,7 +12,6 @@ class Functions
 	}
 	public function GenerateHeader($contenttype)
 	{
-		}
 		if($contenttype == "json")
 		{	
     		header('Content-Type: application/json; charset=utf-8');
