@@ -153,7 +153,11 @@ const MainProvider: React.FC = ({ children }) => {
   }
 
   async function verifyToken(tok: string){
-    const response = await api.post('/login', { tok });
+
+    var data = new FormData();
+    data.append('token', tok);
+    
+    const response = await api.post('/login', data);
     if(response.data.status === 'success'){
       setCredential({
         name: response.data.user_firstname,
