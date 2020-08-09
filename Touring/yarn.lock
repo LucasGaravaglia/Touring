@@ -991,6 +991,11 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@expo-google-fonts/rancho@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/rancho/-/rancho-0.1.0.tgz#6fb93a3f9ba3996eb4872a4632745c9aa26c1af2"
+  integrity sha512-icr7lKe21YUOQ9jOxNcSrG+GT3c3eC89R48GAuI1N2kYYofGRnnc6PO79UVYXM7Ta/yMS5U8tbGzqhhHM2FU0g==
+
 "@expo-google-fonts/roboto@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.1.0.tgz#2897dc09db4ceb9f5ba337103090e1d70236e811"
