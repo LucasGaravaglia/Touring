@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, FlatList, Image, TextInput } from 'react-native';
 import Styles from "./style"
+import { StackScreenProps } from '@react-navigation/stack';
+import RouterDefinition from "../../../RouterDefinition"
 
 
 const dataList = [
@@ -49,7 +51,8 @@ interface PointProps {
     name: string
   }
 }
-const PageNameHere = () => {
+type Props = StackScreenProps<RouterDefinition, 'FindTouristSpot'>;
+const FindTouristSpot = ({ route, navigation }: Props) => {
   const renderItem = (param: PointProps) => {
     return (
       <View style={Styles.containerSpot}>
@@ -67,6 +70,9 @@ const PageNameHere = () => {
         </View>
       </View>
     )
+  }
+  function handlerClick(param: PointProps) {
+
   }
 
   return (
@@ -86,4 +92,4 @@ const PageNameHere = () => {
   );
 }
 
-export default PageNameHere;
+export default FindTouristSpot;

@@ -15,6 +15,16 @@ type RootStackParamList = {
     description: string,
     address: string,
     phone: string
+  };
+  FindTouristSpot: {
+    key: number,
+    linkImg: string,
+    avaliation: number,
+    state: string,
+    name: string,
+    description: string,
+    address: string,
+    phone: string
   }
 
 };

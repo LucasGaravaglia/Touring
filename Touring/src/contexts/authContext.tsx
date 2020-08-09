@@ -5,11 +5,17 @@ import Axios from 'axios';
 import { Alert } from 'react-native';
 import AsyncStorage, {  } from '@react-native-community/async-storage';
 
+import api from '../../services/api';
+
+
 interface AuthContextData {
   authenticated: boolean,
   loading: boolean,
   facebookLogin: () => void,
-  googleLogin: () => void
+  googleLogin: () => void,
+  firstLoginChecker: () => void,
+  fisrtLoginChecked: boolean,
+  signOut: () => void
 }
 
 interface GoogleResponse {
@@ -22,7 +28,7 @@ interface GoogleResponse {
     photoUrl:string,
   },
   type: string,
-  accessToken: string
+  accessToken: string,
 }
 
 interface UserProps {
@@ -40,6 +46,29 @@ const MainProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [user, setUser] = useState<UserProps>();
+  const [fisrtLoginChecked, setFirstLoginChecked] = useState(false)
+
+
+
+  async function firstLoginChecker(){
+
+    setLoading(true);
+
+    const dataTosend = {
+      name: user?.name,
+      email: user?.name,
+      login_method: user?.tokenType
+    }
+
+    const response = await api.post('/ajax/login.php', dataTosend ).catch(error => {
+      console.log(error);
+    });
+
+    console.log(response);
+    setFirstLoginChecked(true);
+    setLoading(false);
+    
+  }
 
   async function signOut(){
     await AsyncStorage.removeItem('TouringUserCredential');
@@ -106,7 +135,9 @@ const MainProvider: React.FC = ({ children }) => {
       token: (response as GoogleResponse).accessToken,
       tokenType: 'Google'
     }
-    await auth(user)
+
+    if(response)
+      await auth(user)
     setLoading(false);
   }
 
@@ -131,7 +162,10 @@ const MainProvider: React.FC = ({ children }) => {
         authenticated,
         loading,
         facebookLogin,
-        googleLogin
+        googleLogin,
+        firstLoginChecker,
+        fisrtLoginChecked,
+        signOut
       }
     }>
       {children}

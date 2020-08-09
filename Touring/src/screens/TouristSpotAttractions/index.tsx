@@ -8,6 +8,7 @@ import RouterDefinition from "../../../RouterDefinition"
 
 type Props = StackScreenProps<RouterDefinition, 'TouristSpotAttractions'>;
 const TouristSpotAttractions = ({ route, navigation }: Props) => {
+  // navigation.navigate("",)
   return (
     <View style={Styles.container}>
       <Image style={Styles.container} source={{ uri: route.params.linkImg }} />
