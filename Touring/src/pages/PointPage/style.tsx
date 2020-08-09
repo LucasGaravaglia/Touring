@@ -5,7 +5,7 @@ const widthScreen = Dimensions.get('window').width
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.blueDefault,
+    backgroundColor: colors.white,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -49,6 +49,7 @@ export default StyleSheet.create({
     height: 70,
     flexDirection: "row",
     justifyContent: "space-around",
+    backgroundColor: colors.blueDefault
   },
   internalContainer: {
     width: "25%",

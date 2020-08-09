@@ -13,7 +13,7 @@ export default StyleSheet.create({
     marginTop: 40,
   },
   logo: {
-    width: 200,
+    width: 300,
     height: 130,
   },
   loadingContainer: {

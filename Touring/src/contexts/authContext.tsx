@@ -78,6 +78,7 @@ const MainProvider: React.FC = ({ children }) => {
     try {
       const response = await api.post('/login.php', data);
       setUserToken(response.data[0].token);
+      console.log('Token aqui: ',response.data)
       await AsyncStorage.setItem('TouringToken', response.data[0].token);
     } catch (error) {
       console.log(error);
