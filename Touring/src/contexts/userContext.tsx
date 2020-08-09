@@ -1,32 +1,33 @@
 import React, { createContext, useState } from 'react';
 import { Alert } from 'react-native';
+import points from '../../data/points'
+import Point from '../../interfaces/Point'
 
 interface UserContextData {
-  getPoints: () => Array<Object>
+  updatePoints: () => void,
+  points: Point[]
 }
 
 export const UserContext = createContext<UserContextData>({} as UserContextData);
 
 const UserProvider: React.FC = ({ children }) => { 
 
-    function getPoints() {
+  const [ points, setPoints ] = useState<Point[]>()
 
-      // Conecta no banco e pega os pontos.
-      // Retorna os pontos.
+  function updatePoints() {
+    
+  }
 
-      return [{}]
-    }
-
-  
-    return (
-      <UserContext.Provider value={
-        {
-          getPoints
-        }
-      }>
-        {children}
-      </UserContext.Provider>
-    )
+  return (
+    <UserContext.Provider value={
+      {
+        updatePoints,
+        points
+      }
+    }>
+      {children}
+    </UserContext.Provider>
+  )
 }
 
 export default UserProvider;
