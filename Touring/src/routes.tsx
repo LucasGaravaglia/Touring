@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 
 function Routes(){
 
-  const { authenticated, loading, firstLoginChecker, fisrtLoginChecked } = useContext(AuthContext);
+  const { authenticated, loading } = useContext(AuthContext);
 
 
   if(loading)
@@ -26,9 +26,6 @@ function Routes(){
 
   if(!authenticated)
     return (<Login />);
-
-  if(!fisrtLoginChecked)
-    firstLoginChecker();
 
   return(
     <Stack.Navigator initialRouteName="FindCity" screenOptions={{ headerShown: false }}>

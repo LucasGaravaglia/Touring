@@ -13,8 +13,6 @@ interface AuthContextData {
   loading: boolean,
   facebookLogin: () => void,
   googleLogin: () => void,
-  firstLoginChecker: () => void,
-  fisrtLoginChecked: boolean,
   signOut: () => void
 }
 
@@ -31,54 +29,59 @@ interface GoogleResponse {
   accessToken: string,
 }
 
-interface UserProps {
+interface credentialProps {
   name: string,
   email: string,
   profilePicture: string,
   token: string,
-  tokenType: 'Google' | 'Facebook'
+  tokenType?: 'Google' | 'Facebook'
+}
+
+interface User {
+  user_token: string,
+  user_first_login: number,
+  user_id: number,
+  user_firstname: string,
+  user_lastname: string,
+  user_cpf: string,
+  user_phone: string,
+  user_address: string,
+  user_email: string,
+  user_image: string,
+  user_type: number,
+  user_creation_datetime: string,
 }
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const MainProvider: React.FC = ({ children }) => { 
   
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [user, setUser] = useState<UserProps>();
-  const [fisrtLoginChecked, setFirstLoginChecked] = useState(false)
-
-
-
-  async function firstLoginChecker(){
-
-    setLoading(true);
-
-    const dataTosend = {
-      name: user?.name,
-      email: user?.name,
-      login_method: user?.tokenType
-    }
-
-    const response = await api.post('/login.php', dataTosend ).catch(error => {
-      console.log(error);
-    });
-
-    console.log(response);
-    setFirstLoginChecked(true);
-    setLoading(false);
-    
-  }
-
+  const [credential, setCredential] = useState<credentialProps>();
+  const [userToken, setUserToken] = useState('');
+  
   async function signOut(){
-    await AsyncStorage.removeItem('TouringUserCredential');
+    await AsyncStorage.removeItem('TouringToken');
     setAuthenticated(false);
-  }
+  }  
 
-  async function auth(user: UserProps){
-    const userString = JSON.stringify(user);
-    await AsyncStorage.setItem('TouringUserCredential', userString);
-    setAuthenticated(true);
+  async function auth(user: credentialProps){
+
+    var data = new FormData();
+
+    data.append('name', user.name);
+    data.append('email', user.email);
+    data.append('user_image', user.profilePicture);
+    data.append('login_method', String(user.tokenType));    
+
+    try {
+      const response = await api.post('/login.php', data);
+      setUserToken(response.data[0].token);
+      await AsyncStorage.setItem('TouringToken', response.data[0].token);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async function facebookLogin() {
@@ -98,25 +101,27 @@ const MainProvider: React.FC = ({ children }) => {
           const profileResponse = await Axios.get(`https://graph.facebook.com/${res.data.id}/picture?type=large`)
           const profilePicture = profileResponse.request.responseURL;
           
-          const user: UserProps= {
+          const user: credentialProps= {
             profilePicture,
             name: nameEmailReponse.data.name,
             email: nameEmailReponse.data.email,
             token: response.token,
             tokenType: 'Facebook'
-          }  
+          }
           await auth(user);
+          setCredential(user);
+          setAuthenticated(true);
         }else{
           throw new Error("Cant get data from Facebook"); 
         }
       } else {
         throw new Error("Cant login with Facebook");        
-      }
-     
+      }     
     } catch ({ message }) {
       Alert.alert(`Não foi possível logar no momento`);
     }
-    setLoading(false);
+   
+    setLoading(false);      
   }
 
   async function googleLogin(){
@@ -128,7 +133,7 @@ const MainProvider: React.FC = ({ children }) => {
     }
     const response = await Google.logInAsync(config);
     const googleUser = (response as GoogleResponse).user ;
-    const user: UserProps = {
+    const user: credentialProps = {
       name: String(googleUser?.name),
       profilePicture: String(googleUser?.photoUrl),
       email: String(googleUser?.email),
@@ -136,20 +141,42 @@ const MainProvider: React.FC = ({ children }) => {
       tokenType: 'Google'
     }
 
-    if(response)
-      await auth(user)
+
+    if(response.type !== 'cancel'){
+      await auth(user);
+      setCredential(user);
+      setAuthenticated(true);
+    }
+      
     setLoading(false);
+  }
+
+  async function verifyToken(tok: string){
+    const response = await api.post('/login', { tok });
+    if(response.data.status === 'success'){
+      setCredential({
+        name: response.data.user_firstname,
+        email: response.data.user_email,
+        profilePicture: response.data.user_image,
+        token: tok
+      });
+      return true
+    }      
+    return false;
   }
 
 
   async function initAuth(){
-    setLoading(true);
-    const stringUserCredential = await AsyncStorage.getItem('TouringUserCredential');
-    if(stringUserCredential){      
-      const user = JSON.parse(stringUserCredential);
-      await auth(user);
+
+    const storagedToken = await AsyncStorage.getItem('TouringToken');
+
+    if(storagedToken){      
+      const tokenIsValid = verifyToken(storagedToken);
+      if(tokenIsValid)
+        setAuthenticated(true);
     }
-    setLoading(false);
+    
+    setLoading(false);    
   }
 
   useEffect(() => {
@@ -163,8 +190,6 @@ const MainProvider: React.FC = ({ children }) => {
         loading,
         facebookLogin,
         googleLogin,
-        firstLoginChecker,
-        fisrtLoginChecked,
         signOut
       }
     }>
