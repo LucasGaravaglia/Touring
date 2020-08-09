@@ -7,7 +7,8 @@ const datdosTeste= [
     name: 'Cataratas do Iguaçu',
     latitude: -25.695259,
     longitude: -54.4366662,
-    id: 0
+    id: 0,
+    description: 'Cataratas do Iguaçu é um conjunto de cerca de 275 quedas de água no rio Iguaçu, localizada entre o Parque Nacional do Iguaçu, Paraná, no Brasil, e o Parque Nacional Iguazú em Misiones, na Argentina, na fronteira entre os dois países. A área total de ambos os parques nacionais corresponde a 250 mil hectares de floresta subtropical e é considerada Patrimônio Natural da Humanidade. O parque nacional argentino foi criado e'
   },{
     adress: 'Avenida das Cataratas, R. Ilha Grande, 8.100, Foz do Iguaçu - PR, 85853-000, Brasil',
     schedule: 'Aberto - Fecha ás 17h',
@@ -15,7 +16,8 @@ const datdosTeste= [
     name: 'Vale dos Dinossauros',
     latitude: -25.5914254,
     longitude: -54.5172672,
-    id: 1
+    id: 1,
+    description: 'Ponto turístico com dinossauros animatrônicos que se movem e fazem sons ao longo de uma trilha ao ar livre.'
   },
   {
     adress: 'Av. das Cataratas, Km 16,5 - Vila Adriana, Foz do Iguaçu - PR, Brasil',
@@ -24,7 +26,8 @@ const datdosTeste= [
     name: 'Parque Aquático Cataratas',
     latitude: -25.6095487,
     longitude: -54.4828218,
-    id: 2
+    id: 2,
+    description: 'Balneário com quartos e piscinas de água morna corrente, tobogan, e pavilhão com bar e gastronomia popular.'
   },
   {
     adress: 'Av. das Cataratas, 4793 - Vila Yolanda, Foz do Iguaçu - PR, 85853-000, Brasil',
@@ -33,7 +36,8 @@ const datdosTeste= [
     name: 'Museu De Cera',
     latitude: -25.5915616,
     longitude: -54.5168294,
-    id: 3
+    id: 3,
+    description: 'O Museu de Cera foi inaugurado em 2014, com um ótimo atendimento em um novo prédio que faz parte do Dreams Park Show Foz do Iguaçu, um complexo que está sendo construído e terá diversos atrativos.'
   },
   {
     adress: 'Avenida das Cataratas, Km 12, 7120 - Vila Yolanda, Foz do Iguaçu - PR, Brasil',
@@ -42,7 +46,8 @@ const datdosTeste= [
     name: 'Acquamania',
     latitude: -25.5825626,
     longitude: -54.5276575,
-    id: 4
+    id: 4,
+    description: 'Parque de diversão extenso com toboáguas, piscinas, atrações infantis e outras atividades.'
   },
   {
     adress: 'Av. Jorge Schimmelpfeng, 70 - Centro, Foz do Iguaçu - PR, 85851-110, Brasil',
@@ -51,7 +56,8 @@ const datdosTeste= [
     name: 'Paróquia São João Batista',
     latitude: -25.5471003,
     longitude: -54.5871826,
-    id: 5
+    id: 5,
+    description: 'Horários das Missas na Paróquia São João Batista - Foz do Iguaçu: Sábado: 06:30 e 19:30 Domingo: 8:00, 10:00, 18:00 e 20:00 Segunda a sexta: 6:00, 12:30...'
   },
   {
     adress: 'Av. Gen. Meira, s/n - Jardim Eldorado, Foz do Iguaçu - PR, 85853-110, Brasil',
@@ -60,7 +66,8 @@ const datdosTeste= [
     name: 'Marco das 3 Fronteiras',
     latitude: -25.5897992,
     longitude: -54.5902003,
-    id: 6
+    id: 6,
+    description: 'O Marco das Três Fronteiras é um obelisco e ponto turístico localizado nas cidades de Foz do Iguaçu, Puerto Iguazú e Presidente Franco referente ao local de divisa territorial respectivamente entre o Brasil, a Argentina e o Paraguai'
   },
   {
     adress: 'R. Meca, 599 - Região Central, Foz do Iguaçu - PR, 85864-410, Brasil',
@@ -69,7 +76,8 @@ const datdosTeste= [
     name: 'Mesquita de Foz do Iguaçu Central',
     latitude: -25.5206032,
     longitude: -54.5787021,
-    id: 7
+    id: 7,
+    description: 'A comunidade árabe de Foz do Iguaçu é uma das mais presentes na cultura da cidade, integrando-se com seus costumes, seu idioma, sua gastronomia, e seu pertencimento à cidade. A Mesquita Omar Ibn Al-Khattab é parte desta presença. Um templo da religião muçulmana, de beleza única na cidade, construído pela comunidade islâmica no início dos anos 1980.'
   },
   {
     adress: 'Av. Paraná, 5440 - Vila A, Foz do Iguaçu - PR, 85860-290, Brasil',
@@ -78,7 +86,8 @@ const datdosTeste= [
     name: 'Catedral Nossa Senhora de Guadalupe',
     latitude: -25.4974948,
     longitude: -54.5734166,
-    id: 8
+    id: 8,
+    description: 'Catedral Nossa Senhora de Guadalupe'
   },
   {
     adress: 'R. Dr. Josivalter Vila Nova, 99 - Jardim California, Foz do Iguaçu - PR, 85867-504, Brasil',
@@ -87,7 +96,8 @@ const datdosTeste= [
     name: 'Templo Budista Chen Tien',
     latitude: -25.4745482,
     longitude: -54.5991128,
-    id: 9
+    id: 9,
+    description: 'O Templo Budista Chen Tien, em Foz do Iguaçu foi construído em 1996 por comunidades chinesas da tríplice fronteira entre Brasil, Paraguai e Argentina e deixa muitos visitantes impressionados com sua beleza. '
   },  
   {
     adress: ' Av. Tancredo Neves, 6704 - Jardim Itaipu, Foz do Iguaçu - PR, 85856-979, Brasil',
@@ -96,7 +106,8 @@ const datdosTeste= [
     name: 'Itaipu Refugio Biológico',
     latitude: -25.4491383,
     longitude: -54.5555018,
-    id: 10
+    id: 10,
+    description: 'O Refúgio Biológico Bela Vista é uma unidade de conservação criada em 27 de junho de 1984, com 1.920 hectares para receber milhares de plantas e animais desalojados quando da formação do reservatório de Itaipu'
   },  
   {
     adress: ' Av. Tancredo Neves, 6001 - Jardim Itaipu, Foz do Iguaçu - PR, Brasil',
@@ -105,7 +116,8 @@ const datdosTeste= [
     name: 'Itaipu Ecomuseu',
     latitude: -25.45474,
     longitude: -54.585381,
-    id: 11
+    id: 11,
+    description: 'O Ecomuseu de Itaipu é um museu localizado na cidade de Foz do Iguaçu, cidade do Estado do Paraná. O museu é administrado pela Itaipu Binacional e sua sede fica dentro da área administrativa da Usina Hidrelétrica de Itaipu. '
   },  
   {
     adress: ' Av. Tancredo Neves, 6702 - Jardim Itaipu, Foz do Iguaçu - PR, 85856-970, Brasil',
@@ -114,7 +126,8 @@ const datdosTeste= [
     name: 'Itaipu Binacional',
     latitude: -25.4471509,
     longitude: -54.5845343,
-    id: 12
+    id: 12,
+    description: 'A Barragem de Itaipu é uma enorme barragem hidroelétrica no rio Paraná, entre o Brasil e o Paraguai. É conhecida pelos espetáculos de luzes noturnos e as vistas do miradouro central. O centro de comando do edifício de produção controla as turbinas da barragem. Nas proximidades, na parte paraguaia, o Museu da Terra Guarani exibe exposições sobre a cultura indígena. A norte, o refúgio Tatí Yupí é uma reserva de vida selvagem com trilhos e aves.'
   },  
   {
     adress: 'Av. Tancredo Neves, 6731 - Jardim Itaipu, Foz do Iguaçu - PR, 85867-900, Brasil',
@@ -123,7 +136,8 @@ const datdosTeste= [
     name: 'Parque Tecnológico Itaipu',
     latitude: -25.4471705,
     longitude: -54.5847378,
-    id: 13
+    id: 13,
+    description: 'A Itaipu levou desenvolvimento e progresso para a região da fronteira. Em 2003, esta contribuição ganhou nova força, com a criação do Parque Tecnológico Itaipu (PTI).'
   },
   {
     adress: 'R. Carlos Hugo Urnau, 3175 - Lot. Dona Amanda, Foz do Iguaçu - PR, 85853-000, Brasil',
@@ -132,7 +146,8 @@ const datdosTeste= [
     name: 'Blue Park Foz',
     latitude: -25.5662356,
     longitude: -54.5538465,
-    id: 14
+    id: 14,
+    description: 'O Blue Park fica sobre o Aquífero Guarani, a segunda maior reserva de água doce do mundo, o que garante seu abastecimento perene de águas termais cristalinas para a sua alegria.'
   }
 
 
