@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import Styles from "./style"
 import { StackScreenProps } from '@react-navigation/stack';
-// import RouterDefinition from "../../../RouterDefinition"
+import RouterDefinition from "../../RouterDefinition"
 
 const local = require("../../resources/LocalIcon.png")
 const Restaurante = require("../../resources/RestauranteIcon.png")
@@ -56,11 +56,15 @@ interface PointProps {
     name: string
   }
 }
-// type Props = StackScreenProps<RouterDefinition, 'FindTouristSpot'>;
+type Props = StackScreenProps<RouterDefinition, 'Point'>;
 const Point = ({ route, navigation }: Props) => {
+
   const renderItem = (param: PointProps) => {
     return (
-      <View style={Styles.containerSpot}>
+      <TouchableOpacity
+        style={Styles.containerSpot}
+        onPress={() => clickHandler(param)}
+      >
         <Image style={Styles.imagem} source={{ uri: param.item.linkImg }} />
         <View style={Styles.containerText}>
           <Text style={Styles.FirstLine}>
@@ -73,11 +77,11 @@ const Point = ({ route, navigation }: Props) => {
             {param.item.state}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
-  function handlerClick(param: PointProps) {
-
+  function clickHandler(param: PointProps) {
+    navigation.navigate('PointDetails',)
   }
 
   return (

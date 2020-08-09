@@ -6,7 +6,7 @@
 
 type RootStackParamList = {
   FindCity: undefined;
-  TouristSpotAttractions: {
+  PointDetails: {
     key: number,
     linkImg: string,
     avaliation: number,
@@ -16,7 +16,7 @@ type RootStackParamList = {
     address: string,
     phone: string
   };
-  FindTouristSpot: {
+  Point: {
     key: number,
     linkImg: string,
     avaliation: number,

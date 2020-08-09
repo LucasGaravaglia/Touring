@@ -40,11 +40,11 @@ function Routes() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Point" component={Point} />
+      <Stack.Screen name="PointDetails" component={PointDetails} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Videos" component={Videos} />
       <Stack.Screen name="UserItinerary" component={UserItinerary} />
       <Stack.Screen name="PointMap" component={PointMap} />
-      <Stack.Screen name="PointDetails" component={PointDetails} />
       <Stack.Screen name="PointAttractions" component={PointAttractions} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Comments" component={Comments} />
