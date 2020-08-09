@@ -6,11 +6,8 @@ import RouterDefinition from "../../RouterDefinition"
 import { UserContext } from '../../contexts/userContext';
 import Point from '../../../interfaces/Point'
 import { StatusBar } from 'expo-status-bar';
+import { Feather } from '@expo/vector-icons';
 
-const local = require("../../resources/LocalIcon.png")
-const Restaurante = require("../../resources/RestauranteIcon.png")
-const Map = require("../../resources/MapIcon.png")
-const Hospedagem = require("../../resources/HospedagemIcon.png")
 
 type Props = StackScreenProps<RouterDefinition, 'PointPage'>;
 const PointPage = ({ route, navigation }: Props) => {
@@ -22,10 +19,10 @@ const PointPage = ({ route, navigation }: Props) => {
     navigation.navigate('PointDetails', item)
   }
 
-  function handleUpdatePage(pointType: string){
+  function handleUpdatePage(pointType: string) {
 
-   setCurrentPointType(pointType);
-   updatePoints(pointType);
+    setCurrentPointType(pointType);
+    updatePoints(pointType);
 
   }
 
@@ -42,7 +39,7 @@ const PointPage = ({ route, navigation }: Props) => {
         onRefresh={() => updatePoints(currentPointType)}
         showsVerticalScrollIndicator={false}
         data={points}
-        renderItem={( {item} ) => {
+        renderItem={({ item }) => {
           return (
             <TouchableOpacity
               style={Styles.containerSpot}
@@ -69,25 +66,25 @@ const PointPage = ({ route, navigation }: Props) => {
       <View style={Styles.containerOptions}>
         <View style={Styles.internalContainer}>
           <TouchableOpacity onPress={() => handleUpdatePage('tourist_place')} style={Styles.pressArea}>
-            <Image source={local} />
+            <Feather name="map-pin" color="#fff" size={35} />
           </TouchableOpacity>
           <Text style={Styles.text}>Pontos Turísticos</Text>
         </View>
         <View style={Styles.internalContainer}>
-          <TouchableOpacity onPress={() => handleUpdatePage('restaurant')}  style={Styles.pressArea}>
-            <Image source={Restaurante} />
+          <TouchableOpacity onPress={() => handleUpdatePage('restaurant')} style={Styles.pressArea}>
+            <Feather name="coffee" color="#fff" size={35} />
           </TouchableOpacity>
           <Text style={Styles.text}>Restaurante</Text>
         </View>
         <View style={Styles.internalContainer}>
           <TouchableOpacity onPress={() => handleUpdatePage('hotel')} style={Styles.pressArea}>
-           <Image source={Map} />
+            <Feather name="briefcase" color="#fff" size={35} />
           </TouchableOpacity>
           <Text style={Styles.text}>Hotéis</Text>
         </View>
         <View style={Styles.internalContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('PointMap')} style={Styles.pressArea}>
-            <Image source={Hospedagem} />
+            <Feather name="map" color="#fff" size={35} />
           </TouchableOpacity>
           <Text style={Styles.text}>Mapa</Text>
         </View>

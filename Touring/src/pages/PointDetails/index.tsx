@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Styles from './styles';
 import { StackScreenProps } from '@react-navigation/stack';
- import RouterDefinition from "../../RouterDefinition"
+import RouterDefinition from "../../RouterDefinition"
+import { Feather } from '@expo/vector-icons';
 
-const ArrowRight = require("../../resources/RightArrow.png")
 
 const data = {
   name: "Marco das três fronteiras",
@@ -31,7 +31,7 @@ interface PointProps {
   }
 }
 
- type Props = StackScreenProps<RouterDefinition, 'PointDetails'>;
+type Props = StackScreenProps<RouterDefinition, 'PointDetails'>;
 const PointDetails = ({ route, navigation }: Props) => {
 
   return (
@@ -67,7 +67,7 @@ const PointDetails = ({ route, navigation }: Props) => {
         style={Styles.button}
       >
         <Text style={Styles.textButton}>Atrações</Text>
-        <Image source={ArrowRight} />
+        <Feather name="arrow-right-circle" color="#fff" size={35} />
       </TouchableOpacity>
 
 
