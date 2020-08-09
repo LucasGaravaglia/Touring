@@ -153,13 +153,13 @@ class user
 		if ($register_user->execute())
 		{
 			$this->user_id = $dbconnection->lastInsertId();
-            $this->GetAccessToken($this->user_login_method);
+			$this->GetAccessToken($this->user_login_method);
 			$this->user_first_login = 1;
 		}
 		$dbconnection = $Database->close();	
 	}
 	
-    public function GetUserData() 
+	public function GetUserData() 
 	{
 		$Database = new Database();
 		$dbconnection = $Database->open();

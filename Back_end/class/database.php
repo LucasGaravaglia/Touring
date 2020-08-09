@@ -6,7 +6,7 @@ Class Database
 		$servername = "localhost";		
         $username = "root";
         $password = "admin";
-	    $dbname = "hackaton";
+	    $dbname = "hackatour";
         try
 	    {
             $pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);

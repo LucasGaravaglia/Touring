@@ -14,7 +14,6 @@ Options +FollowSymlinks
 
 	
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^help\/([^\/]+)\/?  help.php?section=$1 [L]
 
 <FilesMatch "\.(htm|html|css|js|php)$">
 AddDefaultCharset UTF-8
