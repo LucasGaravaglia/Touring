@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: fdb30.atspace.me
--- Generation Time: 09-Ago-2020 às 21:41
+-- Generation Time: 09-Ago-2020 às 22:25
 -- Versão do servidor: 5.7.20-log
 -- PHP Version: 5.5.38
 
@@ -84,8 +84,11 @@ INSERT INTO `tour_spots` (`tour_spot_id`, `tour_spot_name`, `tour_spot_phone`, `
 (3, 'Rafain Churrascaria Show', '(45) 3523-1177', 'Segunda à Sábado, 19:00 às 23:00 e Domingo 11:30 às 16:00', '-25.5564687,-54.5660356', 'Av das Cataratas, 101', 'Foz do Iguaçu - PR', 'restaurant', 'Almoce ou jante na maior churrascaria de Foz do Iguaçu', 'https://cdipg.s3.amazonaws.com/foz_do_iguacu/events/photos/000/000/117/show/05_rafa.jpg'),
 (4, 'Cataratas do Iguaçu', '(45) 3521-4400', 'Todos os dias, das 09:00 às 19:00', '-25.6175807,-54.4789895', 'Av das Cataratas, 755', 'Foz do Iguaçu', 'tourist_place', 'Veja de perto a maior queda de água do país', 'https://s2.glbimg.com/T2Hf6r1Pyp1vuvjkkNIz3NTd0BM=/0x0:1280x848/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/0/p/20GTC7SBuuNbHXt6xRK'),
 (5, 'Bourbon Cataratas do Iguaçu Resort', '(45) 3521-3900', 'Todos os dias 24h', '-25.559867,-54.5616859', 'Av. das Cataratas, 2345 - Vila Yolanda', 'Foz do Iguaçu', 'hotel', 'Visite o Hotel Bourbon', 'https://media-cdn.tripadvisor.com/media/photo-s/0f/39/37/25/bourbon-cataratas-convention.jpg'),
-(6, 'Usina Hidrelétrica de Itaipu', '(45) 3576-7000', 'Todos os dias, das 08:00 às 17:00', '-25.4468097,-54.5850724', 'Av. Tancredo Neves, 6702', 'Foz do Iguaçu', 'tourist_place', 'A maior usina hidrelétrica do mundo', 'https://www.itaipu.gov.br/sites/default/files/itaipu2015_logo.png'),
-(7, 'City Bier Petiscaria', '(45) 3025-3977', 'Segunda à Sábado, das 11:00 às 22:00', '-25.5431319,-54.5840887', 'Rua Quintino Bocaiúva, 1088 - Centro', 'Foz do Iguaçu - PR', 'restaurant', 'Carnes na chapa, feijoada, chopes, drinques e mais em espaço descontraído, com tijolo aparente e área externa', 'https://media-cdn.tripadvisor.com/media/photo-s/09/c1/3e/26/city-bier.jpg');
+(6, 'Usina Hidrelétrica de Itaipu', '(45) 3576-7000', 'Todos os dias, das 08:00 às 17:00', '-25.4468097,-54.5850724', 'Av. Tancredo Neves, 6702', 'Foz do Iguaçu', 'tourist_place', 'A maior usina hidrelétrica do mundo', 'https://s2.glbimg.com/G07Ul6xcD9vVWYBnaBIpTFWrKjU=/620x430/e.glbimg.com/og/ed/f/original/2020/02/14/20151122am9060.jpg'),
+(7, 'City Bier Petiscaria', '(45) 3025-3977', 'Segunda à Sábado, das 11:00 às 22:00', '-25.5431319,-54.5840887', 'Rua Quintino Bocaiúva, 1088 - Centro', 'Foz do Iguaçu - PR', 'restaurant', 'Carnes na chapa, feijoada, chopes, drinques e mais em espaço descontraído, com tijolo aparente e área externa', 'https://media-cdn.tripadvisor.com/media/photo-s/09/c1/3e/26/city-bier.jpg'),
+(8, 'Marco das Três Fronteiras', '(45) 3132-4101', 'Terça à Domingo, das 15:00 às 21:00', '-25.5897992,-54.5902003', 'Av. Gen. Meira, s/n - Jardim Eldorado', 'Foz do Iguaçu', 'tourist_place', 'Visualize as três fronteiras de Foz do Iguaçu em um lugar só', 'https://www.comboiguassu.com.br/wp-content/uploads/2020/03/Marco-das-Tr%C3%AAs-Fronteiras-750x410.jpg'),
+(9, 'DreamLand - Museu de Cera', '(45) 3527-8100', 'Terça à Domingo, das 13:00 às 18:00', '-25.5806329,-54.5754501', 'Av. das Cataratas, 8100', 'Foz do Iguaçu', 'tourist_place', 'Grande museu de cera com muitos personagens, dinossauros animatrônicos, exposições de carros e motocicletas', 'https://media-cdn.tripadvisor.com/media/photo-s/07/a0/f4/2a/museu-de-cera-dreamland.jpg'),
+(10, 'Templo Budista Chen Tien', '(45) 3524-5566', 'Terça à Domingo, das 09:30 às 16:30', '-25.5059209,-54.6120762', 'Rua. Dr. Josivalter Vila Nova, 99 - Jardim California', 'Foz do Iguaçu', 'tourist_place', 'O Templo Budista Chen Tien, em Foz do Iguaçu foi construído em 1996 por comunidades chinesas da tríplice fronteira entre Brasil, Paraguai e Argentina e deixa muitos visitantes impressionados com sua beleza', 'https://www.hoteldelreyfoz.com.br/wp-content/uploads/2018/02/templo-budista-chen-tien-Foz-do_Iguacu.jpg');
 
 -- --------------------------------------------------------
 
@@ -165,7 +168,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_cpf`, `user_phone`, `user_address`, `user_email`, `user_image`, `user_type`, `user_creation_datetime`) VALUES
 (1, 'Levi Arcanjo', NULL, NULL, NULL, NULL, 'arcanjolevi@gmail.com', 'https://lh3.googleusercontent.com/a-/AOh14Gi5r3uW_s0j-DXG7jsJOiYuQjiFs_iFpllx9RdnYQ', 0, '2020-08-09 02:33:51'),
-(2, 'Leví Cícero Arcanjo', NULL, NULL, NULL, NULL, 'arcanjolevi@hotmail.com', 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3027022580728675&height=200&width=200&ext=1599543282&hash=AeQS-Z-Fc2Ah9rv6', 0, '2020-08-09 02:34:44');
+(2, 'Leví Cícero Arcanjo', NULL, NULL, NULL, NULL, 'arcanjolevi@hotmail.com', 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3027022580728675&height=200&width=200&ext=1599543282&hash=AeQS-Z-Fc2Ah9rv6', 0, '2020-08-09 02:34:44'),
+(3, 'Lucas Garavaglia', NULL, NULL, NULL, NULL, 'lucaaspvp@gmail.com', 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3851426001568432&height=200&width=200&ext=1599602149&hash=AeRrpdMyb49MDvGY', 0, '2020-08-09 18:55:51');
 
 -- --------------------------------------------------------
 
@@ -203,7 +207,9 @@ INSERT INTO `user_login_token` (`user_login_token_id`, `user_login_user_id`, `us
 (14, 2, 'Facebook', '20a3409ad3baea22c2dbbb25c5b918640199210c63feae802593daae0d541dd5fec5a0772dd297a77186f67e66362d41c823a638867386b78754b71c79dd63a011798a7e58ee4f109e27631b28d15087a928c580826fa25e875674f2694d9393b582d160b4f2f1da2a921dd8fecaab06ddca832ce2ef696e6246d776b0c91b3ba71c100fa0b664e0ce56da64bca64afbf57e54e0e26469ebf30f7b04bdf4d1f88f5168b649aeb0cd60cd02425d95ba4039b3cb83d8521d4e3dda5a48e337a00a605eb396cd6c923b36426d85bed8bdf7014b76c493414eb4b40bbe9d40bac647668b50803511bb4a80876257a550e2c476c650de1737a6179be6a6b9893468c9', '2021-08-09 14:48:27', '::1'),
 (15, 2, 'Facebook', '5b137299eff88b848ed4c5c048f1b3dbb877e3a5b7b47809aeef25d9e4954eaab78d316dbc53f0a4dcc8197334ea3d15ddee4df61818cf0bead3e373c75166a18639536eb7b213067345fdb5ebe43d778999718f9a13532aadab30d00214380eecb6b207ca0d40fb05b51bfdcc76cf69c1ea149b77d686b06f6b9324aa389632e23b8b8ebae2026ac7473271baf8995540f9825e790d712a7b8eb83c7faf7aa844ec4ae09cb69372d3ab48804e1ba84c9d5673a8305c3d7dc175e7cbf2106524a641c8ddde8afa2d928d20ec3a87383fc8071f4f17aabacee5bea1541630770593eeb93947cd8d6985d813f06d2bf12d7a93b96a1641592738d688e96a7973f7', '2021-08-09 17:07:51', '::1'),
 (16, 2, 'Facebook', '95864752ad8554350a21a6ffeecabd39108e5c889780c4b48cae960decd198f638d95d25c035ac8d734ddd5219148fc317d08c2a55d5679f992220757ea562958ceaca83691f12333ab1d90a380abe23bdce1ede6323df906515e3839b7d79c119d3f5653dbdded042ebf156ee2757d0a4c728f785f636b8b5ed1667a80ab2a39534d0589b9edb6c14b5e33341012b9d378974497eab5ad14e198d2bc57204b77686471c0557537a49cbcf9dbf6f8e9af9f4e0c5773f84a2ed361b5ea38ac8c9c987836e512661b78033dc2351e6155bda4f9bcd3668caaf9b93f922c2424761eaee51c30acd1217e2349757ff053935f4e4ff1789debdca97dcb19f5820fcf4', '2021-08-09 17:20:56', '::1'),
-(17, 1, 'Google', '480e972f34c92856c333979ab30b95297adac2c72ea60fa4b74015879727ca6b5afe840cb85ba1fa6bc1ec76459383779cde3f708654e2f82a343cfee6d5e6d1a76d6ca0af57c5890c4b64b1e8393b4f216d1f6c5c310dd5ea79150a5e2e317a74ae0b57b4e39500e9c5d9735a4bbf5a1cfd00130d0966752c0b278e9f676b0f2f4da7d5c948b5abfabb08f5c5733835afae9bbec7bdad0ffcda349024e3ba30b4c0716b6e8413c42554723af65aecce20003f5dc2be0ae42d50f3f47be967724b3369727bf9321d99d13bf8a5b0d0da1db45d9e2c1eb0b0cdd606235091c5f1371b14fc7b826ccde62e05af9f4335b395d286435c84c7eb1431b2f348d0ecce', '2021-08-09 17:37:21', '45.184.108.35');
+(17, 1, 'Google', '480e972f34c92856c333979ab30b95297adac2c72ea60fa4b74015879727ca6b5afe840cb85ba1fa6bc1ec76459383779cde3f708654e2f82a343cfee6d5e6d1a76d6ca0af57c5890c4b64b1e8393b4f216d1f6c5c310dd5ea79150a5e2e317a74ae0b57b4e39500e9c5d9735a4bbf5a1cfd00130d0966752c0b278e9f676b0f2f4da7d5c948b5abfabb08f5c5733835afae9bbec7bdad0ffcda349024e3ba30b4c0716b6e8413c42554723af65aecce20003f5dc2be0ae42d50f3f47be967724b3369727bf9321d99d13bf8a5b0d0da1db45d9e2c1eb0b0cdd606235091c5f1371b14fc7b826ccde62e05af9f4335b395d286435c84c7eb1431b2f348d0ecce', '2021-08-09 17:37:21', '45.184.108.35'),
+(18, 3, 'Facebook', 'e4cb9b626bf2019a2b55e71a0a79fb01150bb5a758a0de61f753467c7306b04a0c6692d112adfe03f4e49b21118ab7be03445c1eeb439a5e24ff676afc1c96fb26a7272652ce6883a36c35c1e9f8b59e763cf47794db5c1e45bbf5e38a90923cb890394dbb0d86dc7a6306f84d6351d964f0c4716ae4e5a8716a3ae2a808e95e4e471bb8de47471054ce7e868ede314a43ae9a56b746793e92fe41be00db1cfa9c538aacd37cd86ef39a148d911154d619e73dc8a3a12ebf8f47560baec26015ac4b43450d47f7d22130d813ce532d915721f54d9ccafe76d92cfa9bc729c13deaa7c1c8b963ea92415d767b95839bc5c7c0a4acc620e2b485cfaceda7ed59c6', '2021-08-09 18:55:51', '177.73.98.74'),
+(19, 3, 'Facebook', 'cdbf0c481bdb75640dde00164292af1ef88ca2d3c18a92561a598259daeb0525fc3d5d9055c1f1c05b04f321515e5db2221f93e4d170c2d13760aa774f14a51b975d47623fe59ffee23aff0e158e760ad57350549727891ee41a6a50cb84712b2df210edd710af981c0e4c0887c680eb710e001233f895b218d7893e0047c5f0723b7f24470a6b207c1611d29a5d7dddac50e312b041164752679f92aa25934b2a64c67fef05b5bb268480ca06ef2d214bd1440034116105e774632e8d5e12009836fe728c9d3088771d3a783df5e5e7b85ecaad42cd1f52d8e9182f19331c7ed77cde831c91ab72aa7c7b506ed5546678014035319e21cea995ee74c3027b9b', '2021-08-09 19:09:34', '177.73.98.74');
 
 --
 -- Indexes for dumped tables
@@ -275,7 +281,7 @@ ALTER TABLE `tour_requests`
 -- AUTO_INCREMENT for table `tour_spots`
 --
 ALTER TABLE `tour_spots`
-  MODIFY `tour_spot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `tour_spot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tour_spots_attractives`
 --
@@ -295,12 +301,12 @@ ALTER TABLE `tour_spots_rate`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user_login_token`
 --
 ALTER TABLE `user_login_token`
-  MODIFY `user_login_token_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `user_login_token_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
