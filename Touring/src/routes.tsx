@@ -4,11 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar'
 
-
 // import Login from './pages/Login';
 import Welcome from './pages/Welcome';
 import Videos from './pages/Videos';
-import UserIntinerary from './pages/UserIntinerary';
+import UserItinerary from './pages/UserItinerary';
 import PointMap from './pages/PointMap';
 import PointDetails from './pages/PointDetails';
 import PointAttractions from './pages/PointAttractions';
@@ -17,13 +16,14 @@ import Menu from './pages/Menu';
 import Comments from './pages/Comments';
 import AttractionsDetails from './pages/AttractionsDetails';
 
-
 // import AuthProvider, { AuthContext } from './contexts/authContext';
+
 const Stack = createStackNavigator();
 
 function Routes() {
 
   // const { authenticated, loading, firstLoginChecker, fisrtLoginChecked } = useContext(AuthContext);
+
 
 
   // if (loading)
@@ -33,15 +33,15 @@ function Routes() {
   //     </View>
   //   );
 
+
   // if (!authenticated)
   //   return (<Login />)
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Welcome" component={Welcome} />
-
       <Stack.Screen name="Videos" component={Videos} />
-      <Stack.Screen name="UserIntinerary" component={UserIntinerary} />
+      <Stack.Screen name="UserItinerary" component={UserItinerary} />
       <Stack.Screen name="PointMap" component={PointMap} />
       <Stack.Screen name="PointDetails" component={PointDetails} />
       <Stack.Screen name="PointAttractions" component={PointAttractions} />
@@ -50,10 +50,10 @@ function Routes() {
       <Stack.Screen name="Comments" component={Comments} />
       <Stack.Screen name="AttractionsDetails" component={AttractionsDetails} />
 
+
     </Stack.Navigator>
   );
 }
-
 
 function Router() {
   return (
@@ -62,6 +62,7 @@ function Router() {
       {/* <AuthProvider> */}
       <Routes />
       {/* </AuthProvider> */}
+
     </NavigationContainer>
   );
 }
