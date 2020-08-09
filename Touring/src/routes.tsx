@@ -55,7 +55,7 @@ function Routes() {
       <Stack.Screen name="Videos" component={Videos} />
       <Stack.Screen name="UserItinerary" component={UserItinerary} options={{ headerShown: false}} />
       <Stack.Screen name="PointMap" component={PointMap} options={{ headerShown: false}}/>
-      <Stack.Screen name="PointAttractions" component={PointAttractions} />
+      <Stack.Screen name="PointAttractions" component={PointAttractions} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: (''), headerStyle: { backgroundColor: '#1F8DBC'}  })} />
       <Stack.Screen name="Menu" component={Menu} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: (''), headerStyle: { backgroundColor: '#1F8DBC'}  })}/>
       <Stack.Screen name="Comments" component={Comments} />
       <Stack.Screen name="AttractionsDetails" component={AttractionsDetails} />
@@ -80,9 +80,8 @@ type ProfileScreenNavigationProp = StackNavigationProp<
   RouterDefinition,
   'PointDetails'
 >;
-
 const arrowBack = (navigation: ProfileScreenNavigationProp) => {
-  return <Feather onPress={() => navigation.navigate('PointPage')} style={{marginLeft: 10}} name="arrow-left" color="#FFF" size={30} />
+  return <Feather onPress={() => navigation.goBack()} style={{marginLeft: 10}} name="arrow-left" color="#FFF" size={30} />
 }
 
 type ProfileScreenNavigationPropHeaderIcon = StackNavigationProp<
@@ -92,6 +91,7 @@ type ProfileScreenNavigationPropHeaderIcon = StackNavigationProp<
 const headerIcon = (navigation: ProfileScreenNavigationPropHeaderIcon) => {
   return <Feather onPress={() => navigation.navigate('Menu')} style={{marginLeft: 10}} name="menu" color="#FFF" size={30} />
 }
+
 
 
 const headerLogo = () => {

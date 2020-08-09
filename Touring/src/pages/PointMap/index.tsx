@@ -105,7 +105,7 @@ const PointMap = ({ route, navigation }: Props) => {
                   <Text style={styles.itemSchedule}>{item.schedule}</Text>
                 </View>
                 <Image style={styles.itemImage} source={{uri: item.pictureUrl}}/>
-                <Feather style={styles.menuIcon} name="trash-2" size={30} color='#FFF'/>
+                <Feather style={styles.menuIcon} name="plus-circle" size={30} color='#FFF'/>
               </TouchableOpacity>
             )
           }}
