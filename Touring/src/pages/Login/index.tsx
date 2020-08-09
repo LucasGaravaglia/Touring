@@ -108,7 +108,7 @@ const Styles = StyleSheet.create({
   },
   mainLogo: {
     marginTop: heightPercentageToDP(7),
-    width: widthPercentageToDP(100),
+    width: widthPercentageToDP(70),
     height: heightPercentageToDP(30),
   },
   instrucctionsTitle: {

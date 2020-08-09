@@ -5,9 +5,9 @@ import Constants from 'expo-constants';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import { Feather } from '@expo/vector-icons';
 
-import testData from '../../../../data/pontosTuristicos';
+import testData from '../../../data/pontosTuristicos';
 
-import { AuthContext } from '../../../contexts/authContext';
+import { AuthContext } from '../../contexts/authContext';
 
 interface ItemProps  {
   adress: string,
