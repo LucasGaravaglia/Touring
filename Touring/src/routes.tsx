@@ -54,7 +54,7 @@ function Routes() {
       <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
       <Stack.Screen name="Videos" component={Videos} />
       <Stack.Screen name="UserItinerary" component={UserItinerary} options={{ headerShown: false}} />
-      <Stack.Screen name="PointMap" component={PointMap} />
+      <Stack.Screen name="PointMap" component={PointMap} options={{ headerShown: false}}/>
       <Stack.Screen name="PointAttractions" component={PointAttractions} />
       <Stack.Screen name="Menu" component={Menu} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: (''), headerStyle: { backgroundColor: '#1F8DBC'}  })}/>
       <Stack.Screen name="Comments" component={Comments} />

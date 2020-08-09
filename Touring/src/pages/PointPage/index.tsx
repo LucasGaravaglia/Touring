@@ -86,7 +86,7 @@ const PointPage = ({ route, navigation }: Props) => {
           <Text style={Styles.text}>Hotéis</Text>
         </View>
         <View style={Styles.internalContainer}>
-          <TouchableOpacity  style={Styles.pressArea}>
+          <TouchableOpacity onPress={() => navigation.navigate('PointMap')} style={Styles.pressArea}>
             <Image source={Hospedagem} />
           </TouchableOpacity>
           <Text style={Styles.text}>Mapa</Text>

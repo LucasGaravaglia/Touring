@@ -9,7 +9,8 @@ type RootStackParamList = {
   PointDetails: Point;
   PointPage: undefined;
   Menu: undefined,
-  UserItinerary: undefined
+  UserItinerary: undefined,
+  PointMap: undefined
 };
 
 export default RootStackParamList;
