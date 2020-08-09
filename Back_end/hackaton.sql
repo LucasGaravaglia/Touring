@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 08-Ago-2020 às 05:56
+-- Tempo de geração: 09-Ago-2020 às 03:35
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.3
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `agency`
+--
+
+CREATE TABLE `agency` (
+  `agency_id` int(11) NOT NULL,
+  `agency_user_id` int(11) NOT NULL,
+  `agency_location` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `agency_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `agency_cnpj` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `agency_phone` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `agency_email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `agency_description` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `agency_image` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `agency_creation_datetime` datetime NOT NULL,
+  `agency_approved` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `restaurant`
 --
 
@@ -34,25 +54,8 @@ CREATE TABLE `restaurant` (
   `restaurant_location` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `restaurant_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `restaurant_description` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `restaurant_phone` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `restaurant_image` varchar(200) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tour_agency`
---
-
-CREATE TABLE `tour_agency` (
-  `tour_agency_id` int(11) NOT NULL,
-  `tour_agency_user_id` int(11) NOT NULL,
-  `tour_agency_location` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `tour_agency_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `tour_agency_cnpj` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `tour_agency_phone` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `tour_agency_email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `tour_agency_description` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `tour_agency_image` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -67,7 +70,7 @@ CREATE TABLE `tour_requests` (
   `tour_request_spots_list` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `tour_request_restaurants_list` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `tour_request_datetime` datetime NOT NULL,
-  `tour_request_status` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `tour_request_status` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -133,9 +136,16 @@ CREATE TABLE `user` (
   `user_address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `user_image` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_type` int(11) NOT NULL,
+  `user_type` int(11) NOT NULL DEFAULT 0,
   `user_creation_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_cpf`, `user_phone`, `user_address`, `user_email`, `user_image`, `user_type`, `user_creation_datetime`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, 'kevin337oficial@gmail.com', NULL, 0, '2020-08-08 16:13:16');
 
 -- --------------------------------------------------------
 
@@ -157,16 +167,16 @@ CREATE TABLE `user_login_token` (
 --
 
 --
+-- Índices para tabela `agency`
+--
+ALTER TABLE `agency`
+  ADD PRIMARY KEY (`agency_id`);
+
+--
 -- Índices para tabela `restaurant`
 --
 ALTER TABLE `restaurant`
   ADD PRIMARY KEY (`restaurant_id`);
-
---
--- Índices para tabela `tour_agency`
---
-ALTER TABLE `tour_agency`
-  ADD PRIMARY KEY (`tour_agency_id`);
 
 --
 -- Índices para tabela `tour_requests`
@@ -209,16 +219,16 @@ ALTER TABLE `user_login_token`
 --
 
 --
+-- AUTO_INCREMENT de tabela `agency`
+--
+ALTER TABLE `agency`
+  MODIFY `agency_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `restaurant`
 --
 ALTER TABLE `restaurant`
   MODIFY `restaurant_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `tour_agency`
---
-ALTER TABLE `tour_agency`
-  MODIFY `tour_agency_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tour_requests`
@@ -248,7 +258,7 @@ ALTER TABLE `tour_spots_attractives_rate`
 -- AUTO_INCREMENT de tabela `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `user_login_token`

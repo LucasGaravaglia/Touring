@@ -60,7 +60,7 @@ const MainProvider: React.FC = ({ children }) => {
       login_method: user?.tokenType
     }
 
-    const response = await api.post('/ajax/login.php', dataTosend ).catch(error => {
+    const response = await api.post('/login.php', dataTosend ).catch(error => {
       console.log(error);
     });
 
