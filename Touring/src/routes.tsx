@@ -37,16 +37,26 @@ function Routes() {
       </View>
     );
 
+  if(!authenticated){
+    return (
+      <> 
+        <StatusBar style='light'/>
+        <Login />
+      </>
+    )
+  }
+    
+
   return (
     <Stack.Navigator initialRouteName="Welcome" >
-      <Stack.Screen name="PointPage" component={PointPage} options={{headerRight:(headerLogo), headerTitle: (''), headerLeft: (headerIcon), headerStyle: { backgroundColor: '#1F8DBC'}}} />
+      <Stack.Screen name="PointPage" component={PointPage} options={({ route, navigation}) => ({headerRight:(headerLogo), headerTitle: (''),  headerLeft: (() => headerIcon(navigation)), headerStyle: { backgroundColor: '#1F8DBC'}})} />
       <Stack.Screen name="PointDetails" component={PointDetails} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: ('Detalhes'), headerStyle: { backgroundColor: '#1F8DBC'}  })} />
       <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
       <Stack.Screen name="Videos" component={Videos} />
-      <Stack.Screen name="UserItinerary" component={UserItinerary} />
+      <Stack.Screen name="UserItinerary" component={UserItinerary} options={{ headerShown: false}} />
       <Stack.Screen name="PointMap" component={PointMap} />
       <Stack.Screen name="PointAttractions" component={PointAttractions} />
-      <Stack.Screen name="Menu" component={Menu} />
+      <Stack.Screen name="Menu" component={Menu} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: (''), headerStyle: { backgroundColor: '#1F8DBC'}  })}/>
       <Stack.Screen name="Comments" component={Comments} />
       <Stack.Screen name="AttractionsDetails" component={AttractionsDetails} />
     </Stack.Navigator>
@@ -75,8 +85,12 @@ const arrowBack = (navigation: ProfileScreenNavigationProp) => {
   return <Feather onPress={() => navigation.navigate('PointPage')} style={{marginLeft: 10}} name="arrow-left" color="#FFF" size={30} />
 }
 
-const headerIcon = () => {
-  return <Feather style={{marginLeft: 10}} name="menu" color="#FFF" size={30} />
+type ProfileScreenNavigationPropHeaderIcon = StackNavigationProp<
+  RouterDefinition,
+  'PointPage'
+>;
+const headerIcon = (navigation: ProfileScreenNavigationPropHeaderIcon) => {
+  return <Feather onPress={() => navigation.navigate('Menu')} style={{marginLeft: 10}} name="menu" color="#FFF" size={30} />
 }
 
 

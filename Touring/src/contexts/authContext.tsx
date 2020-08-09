@@ -13,7 +13,8 @@ interface AuthContextData {
   loading: boolean,
   facebookLogin: () => void,
   googleLogin: () => void,
-  signOut: () => void
+  signOut: () => void,
+  credential?: credentialProps
 }
 
 interface GoogleResponse {
@@ -153,14 +154,22 @@ const MainProvider: React.FC = ({ children }) => {
   }
 
   async function verifyToken(tok: string){
-    const response = await api.post('/login', { tok });
-    if(response.data.status === 'success'){
+
+    var data = new FormData();
+    data.append('token', tok);
+
+    const response = await api.post('/login', data);
+    if(response){
+
+      
       setCredential({
-        name: response.data.user_firstname,
-        email: response.data.user_email,
-        profilePicture: response.data.user_image,
+        name: response.data[0].user_firstname,
+        email: response.data[0].user_email,
+        profilePicture: response.data[0].user_image,
         token: tok
       });
+
+     
       return true
     }      
     return false;
@@ -191,7 +200,8 @@ const MainProvider: React.FC = ({ children }) => {
         loading,
         facebookLogin,
         googleLogin,
-        signOut
+        signOut,
+        credential
       }
     }>
       {children}

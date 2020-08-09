@@ -44,8 +44,8 @@ const UserProvider: React.FC = ({ children }) => {
 
   async function updatePoints(pointType: string) {
     setLoading(true);
-    const response = await api.get('/spot?tour_spot_category=tourist_place');
-    console.log(response.data)
+    //const response = await api.get('/spot?tour_spot_category=tourist_place');
+    //console.log(response.data)
     setLoading(false);
   }
 
