@@ -4,10 +4,11 @@ import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity, Keyboard, To
 import Constants from 'expo-constants';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import { Feather } from '@expo/vector-icons';
+import { StackScreenProps } from '@react-navigation/stack';
+import testData from '../../../data/pontosTuristicos';
 
-import testData from '../../../../data/pontosTuristicos';
-
-import { AuthContext } from '../../../contexts/authContext';
+import RouterDefinition from '../../RouterDefinition';
+import { AuthContext } from '../../contexts/authContext';
 
 interface ItemProps  {
   adress: string,
@@ -23,7 +24,9 @@ interface RenderItem {
   item: ItemProps
 }
 
-const UserItinerary = () => {
+
+type Props = StackScreenProps<RouterDefinition, 'UserItinerary'>;
+const UserItinerary = ({ route, navigation }: Props) => {
 
   const { signOut } = useContext(AuthContext);
   
@@ -51,7 +54,7 @@ const UserItinerary = () => {
       <View style={styles.headerContainer}>
         <View style={styles.header}>
 
-          <TouchableOpacity onPress={signOut}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Feather style={styles.menuIcon} name="arrow-left" size={40} color='#FFF'/>
           </TouchableOpacity>            
 

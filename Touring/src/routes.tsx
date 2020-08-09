@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { StatusBar } from 'expo-status-bar'
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import { StatusBar } from 'expo-status-bar';
+import { Feather } from '@expo/vector-icons';
 
 import Login from './pages/Login';
 import Welcome from './pages/Welcome';
@@ -15,6 +16,10 @@ import PointPage from './pages/PointPage';
 import Menu from './pages/Menu';
 import Comments from './pages/Comments';
 import AttractionsDetails from './pages/AttractionsDetails';
+
+import RouterDefinition from './RouterDefinition';
+
+const logo = require('../assets/Touring.png');
 
 import AuthProvider, { AuthContext } from './contexts/authContext';
 import UserProvider from './contexts/userContext';
@@ -32,23 +37,28 @@ function Routes() {
       </View>
     );
 
-
-  if (!authenticated)
-    return (<Login />)
+  if(!authenticated){
+    return (
+      <> 
+        <StatusBar style='light'/>
+        <Login />
+      </>
+    )
+  }
+    
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="PointPage" component={PointPage} />
-      <Stack.Screen name="PointDetails" component={PointDetails} />
-      <Stack.Screen name="Welcome" component={Welcome} />
+    <Stack.Navigator initialRouteName="Welcome" >
+      <Stack.Screen name="PointPage" component={PointPage} options={({ route, navigation}) => ({headerRight:(headerLogo), headerTitle: (''),  headerLeft: (() => headerIcon(navigation)), headerStyle: { backgroundColor: '#1F8DBC'}})} />
+      <Stack.Screen name="PointDetails" component={PointDetails} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: ('Detalhes'), headerStyle: { backgroundColor: '#1F8DBC'}  })} />
+      <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
       <Stack.Screen name="Videos" component={Videos} />
-      <Stack.Screen name="UserItinerary" component={UserItinerary} />
+      <Stack.Screen name="UserItinerary" component={UserItinerary} options={{ headerShown: false}} />
       <Stack.Screen name="PointMap" component={PointMap} />
       <Stack.Screen name="PointAttractions" component={PointAttractions} />
-      <Stack.Screen name="Menu" component={Menu} />
+      <Stack.Screen name="Menu" component={Menu} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: (''), headerStyle: { backgroundColor: '#1F8DBC'}  })}/>
       <Stack.Screen name="Comments" component={Comments} />
       <Stack.Screen name="AttractionsDetails" component={AttractionsDetails} />
-
     </Stack.Navigator>
   );
 }
@@ -56,7 +66,7 @@ function Routes() {
 function Router() {
   return (
     <NavigationContainer>
-      <StatusBar style='light' />
+      <StatusBar style='dark' />
       <AuthProvider>
         <UserProvider>
           <Routes />
@@ -64,6 +74,28 @@ function Router() {
       </AuthProvider>
     </NavigationContainer>
   );
+}
+
+type ProfileScreenNavigationProp = StackNavigationProp<
+  RouterDefinition,
+  'PointDetails'
+>;
+
+const arrowBack = (navigation: ProfileScreenNavigationProp) => {
+  return <Feather onPress={() => navigation.navigate('PointPage')} style={{marginLeft: 10}} name="arrow-left" color="#FFF" size={30} />
+}
+
+type ProfileScreenNavigationPropHeaderIcon = StackNavigationProp<
+  RouterDefinition,
+  'PointPage'
+>;
+const headerIcon = (navigation: ProfileScreenNavigationPropHeaderIcon) => {
+  return <Feather onPress={() => navigation.navigate('Menu')} style={{marginLeft: 10}} name="menu" color="#FFF" size={30} />
+}
+
+
+const headerLogo = () => {
+  return <Image style={{marginRight: 10}} source={logo}/>
 }
 
 export default Router;
