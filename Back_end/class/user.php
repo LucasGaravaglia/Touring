@@ -13,6 +13,7 @@ class user
 	public $user_email;
 	public $user_image;
 	public $user_type;
+	public $user_creation_datetime;
 	public $user_token;
 	public $user_login_method;
 	public $user_first_login;
@@ -39,11 +40,12 @@ class user
 		$this->user_first_login;
 	}
 	
-    public function Login($user_email, $user_login_method, $user_name)
+    public function Login($user_email, $user_login_method, $user_name, $user_image)
 	{
 		$this->user_email = $user_email;
 		$this->user_login_method = $user_login_method;
 		$this->user_firstname = $user_name;
+		$this->user_image = $user_image;
 		$Database = new Database();
 		$dbconnection = $Database->open();
 		$user = $dbconnection->prepare('SELECT * FROM user WHERE user_email = :user_email');
@@ -63,7 +65,8 @@ class user
 				$this->user_image = $userdata["user_image"];
 				$this->user_type = $userdata["user_type"];
 				$this->user_creation_datetime = $userdata["user_creation_datetime"];
-				GetAccessToken($user_login_method);
+				$this->user_first_login = 0;
+				$this->GetAccessToken();
 			}
 			else $this->RegisterUser();		
 		}
@@ -115,19 +118,20 @@ class user
 				}
 				else $this->user_token = "INVALID";
 			}
+			else $this->user_token = "INVALID";
 		}
 		$dbconnection = $Database->close();
 	}
 
-	public function GetAccessToken($user_login_method)
+	public function GetAccessToken()
 	{
 		$ip_address = $_SERVER['REMOTE_ADDR'];
 		$token = hash('sha512', md5(uniqid($this->user_id . NOW, true))) . hash('sha512', uniqid($this->user_id . NOW, true)) . hash('sha512', $this->user_id . NOW) . hash('sha512', NOW);
-		$user_login_expires = date('Y-m-d H:i:s', strtotime('+3 days', strtotime(NOW)));
+		$user_login_expires = date('Y-m-d H:i:s', strtotime('+365 days', strtotime(NOW)));
 		$Database = new Database();
 		$dbconnection = $Database->open();		
 		$register_token = $dbconnection->prepare("INSERT INTO user_login_token (user_login_method, user_login_user_id, user_login_token, user_login_expires, user_login_token_ip) VALUES (:user_login_method, :user_login_user_id, :user_login_token, :user_login_expires, :user_login_token_ip)");
-		$register_token->bindParam(':user_login_method', $user_login_method, PDO::PARAM_STR);
+		$register_token->bindParam(':user_login_method', $this->user_login_method, PDO::PARAM_STR);
 		$register_token->bindParam(':user_login_user_id', $this->user_id, PDO::PARAM_INT);
 		$register_token->bindParam(':user_login_token', $token, PDO::PARAM_STR);
 		$register_token->bindParam(':user_login_expires', $user_login_expires);
@@ -141,27 +145,44 @@ class user
 		$user_creation_datetime = date('Y-m-d H:i:s', strtotime(NOW));
 		$Database = new Database();
 		$dbconnection = $Database->open();
-		$register_user = $dbconnection->prepare("INSERT INTO user (user_firstname, user_email, user_creation_datetime) VALUES (:user_firstname, :user_email, :user_creation_datetime)");
+		$register_user = $dbconnection->prepare("INSERT INTO user (user_firstname, user_email, user_image, user_creation_datetime) VALUES (:user_firstname, :user_email, :user_image, :user_creation_datetime)");
 		$register_user->bindParam(':user_creation_datetime', $user_creation_datetime);
 		$register_user->bindParam(':user_firstname', $this->user_firstname, PDO::PARAM_STR);
 		$register_user->bindParam(':user_email', $this->user_email, PDO::PARAM_STR);
+		$register_user->bindParam(':user_image', $this->user_image, PDO::PARAM_STR);
 		if ($register_user->execute())
 		{
 			$this->user_id = $dbconnection->lastInsertId();
-            $this->GetAccessToken($user_login_method);
+            $this->GetAccessToken($this->user_login_method);
 			$this->user_first_login = 1;
 		}
 		$dbconnection = $Database->close();	
 	}
 	
-    public function get_userdata() 
-	{	
-		return array (
-			"user_firstname" => $this->user_firstname,
-			"user_lastname" => $this->user_lastname,
-			"user_photo" => $this->user_photo,
-			"user_email" => $this->user_email
-		);
+    public function GetUserData() 
+	{
+		$Database = new Database();
+		$dbconnection = $Database->open();
+		$user = $dbconnection->prepare('SELECT * FROM user WHERE user_id = :user_id');
+		$user->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+		if ($user->execute())
+		{	
+			if ($user->rowCount() > 0)
+			{
+				$userdata = $user->fetch(PDO::FETCH_ASSOC);
+				$this->user_id = $userdata["user_id"];
+				$this->user_firstname = $userdata["user_firstname"];
+				$this->user_lastname = $userdata["user_lastname"];
+				$this->user_cpf = $userdata["user_cpf"];
+				$this->user_phone = $userdata["user_phone"];
+				$this->user_address = $userdata["user_address"];
+				$this->user_email = $userdata["user_email"];
+				$this->user_image = $userdata["user_image"];
+				$this->user_type = $userdata["user_type"];
+				$this->user_creation_datetime = $userdata["user_creation_datetime"];
+			}	
+		}
+		$dbconnection = $Database->close();		
 	}
 }
 ?>

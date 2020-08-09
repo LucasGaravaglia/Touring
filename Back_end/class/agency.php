@@ -26,14 +26,6 @@ class agency
 	
     public function InsertAgency()
 	{
-			public $agency_user_id;
-	public $agency_location;
-	public $agency_address;
-	public $agency_cnpj;
-	public $agency_phone;
-	public $agency_email;
-	public $agency_description;
-
 		$agency_creation_datetime = date('Y-m-d H:i:s', strtotime(NOW));
 		$Database = new Database();
 		$dbconnection = $Database->open();

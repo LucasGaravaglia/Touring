@@ -33,6 +33,15 @@ else
 
 	require_once "../class/user.php";
 	$user = new user($user_login_token);
+	if ($user->user_token === "INVALID")
+	{
+		$response = array(
+						"status" => "error", 
+						"error_msg" => "invalid_token_access"
+					);
+		$user = null;
+		$Functions->KillPage($response);
+	}
 	$update_userdata_response = $user->UpdateUserData($new_userdata);
 	$user = null;
 	$Functions->KillPage(array("status" => "success", "success_msg" => "userdata_changed_successfully"));
