@@ -9,12 +9,12 @@ import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsi
 
 import { AuthContext } from '../../contexts/authContext';
 
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  Image, 
-  TouchableOpacity, 
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
   ActivityIndicator,
   TouchableWithoutFeedback,
   Keyboard
@@ -34,24 +34,24 @@ const LoginPage = () => {
   });
 
   const { googleLogin, facebookLogin, loading } = useContext(AuthContext);
- 
 
-  if(loading || !fontsLoaded)
+
+  if (loading || !fontsLoaded)
     return (
       <View style={Styles.loadingContainer}>
-        <ActivityIndicator color="#FFF" size={60}/>
-      </View>      
+        <ActivityIndicator color="#FFF" size={60} />
+      </View>
     );
- 
-  return(
+
+  return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={Styles.container}>
 
         <TouchableOpacity style={Styles.langButton}>
           <Feather style={Styles.langIcon} name="globe" color="#727582" size={25} />
-          <Text style={Styles.langButtonText}>Português BR</Text>        
+          <Text style={Styles.langButtonText}>Português BR</Text>
         </TouchableOpacity>
-        
+
         <Image source={logo} style={Styles.mainLogo} />
 
         <Text style={Styles.instrucctionsTitle}>
@@ -60,10 +60,10 @@ const LoginPage = () => {
 
         <Text style={Styles.instrucctionsText}>
           Faça login para continuar
-        </Text>    
+        </Text>
 
         <TouchableOpacity onPress={facebookLogin} style={Styles.facebookButton}>
-          <Image style={Styles.facebookIcon} source={facebookIcon}/>
+          <Image style={Styles.facebookIcon} source={facebookIcon} />
           <Text style={Styles.facebookButtonText}>Continuar com o Facebook</Text>
         </TouchableOpacity>
 
@@ -83,7 +83,7 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1F8DBC',
-    alignItems: 'center',    
+    alignItems: 'center',
   },
   loadingContainer: {
     flex: 1,
@@ -98,18 +98,18 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: constants.statusBarHeight + 10
   },
-  langButtonText:{
+  langButtonText: {
     color: '#FFF',
     fontSize: 16
   },
-  langIcon:{
+  langIcon: {
     marginRight: 5,
     color: '#FFF'
   },
-  mainLogo: {    
+  mainLogo: {
     marginTop: heightPercentageToDP(7),
     width: widthPercentageToDP(100),
-    height: heightPercentageToDP(30), 
+    height: heightPercentageToDP(30),
   },
   instrucctionsTitle: {
     color: '#FFFFFF',
@@ -139,7 +139,7 @@ const Styles = StyleSheet.create({
     fontFamily: 'Roboto_700Bold',
     fontSize: 18
   },
-  facebookIcon:{
+  facebookIcon: {
     width: 40,
     height: 40,
     marginRight: 10
