@@ -22,7 +22,11 @@ const Stack = createStackNavigator();
 
 function Routes() {
 
+<<<<<<< HEAD
+  const { authenticated, loading } = useContext(AuthContext);
+=======
   // const { authenticated, loading, firstLoginChecker, fisrtLoginChecked } = useContext(AuthContext);
+>>>>>>> 1c4098cda45181f22ccc4dd0365cdb53aa0d14dc
 
 
 
@@ -50,7 +54,14 @@ function Routes() {
       <Stack.Screen name="Comments" component={Comments} />
       <Stack.Screen name="AttractionsDetails" component={AttractionsDetails} />
 
+<<<<<<< HEAD
+  return(
+    <Stack.Navigator initialRouteName="FindCity" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="FindCity" component={FindCity} />
+      <Stack.Screen name="UserRegister" component={UserRegister} />
+=======
 
+>>>>>>> 1c4098cda45181f22ccc4dd0365cdb53aa0d14dc
     </Stack.Navigator>
   );
 }
