@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { Alert } from 'react-native';
-import testData from '../../data/points'
+import testData from '../../data/pontosTuristicos';
 import Point from '../../interfaces/Point'
 import api from '../../services/api';
 
@@ -15,6 +15,7 @@ interface ResponsePoint{
   tour_spot_address: string,
   tour_spot_city: string,
   tour_spot_description: string,
+  tour_spot_id: number,
   tour_spot_image: string,
   tour_spot_location: string,
   tour_spot_name: string,
@@ -31,22 +32,44 @@ const UserProvider: React.FC = ({ children }) => {
 
 
   function translate(data: ResponsePoint[]){
-    /*const translatedData: Point[] = data.map( p => {
+    const translatedData: Point[] = data.map( p => {
       return {
-        key: p.tour_spot_name,
+        key: p.tour_spot_id,
         linkImg: p.tour_spot_image,
-        rating: p.,
+        rating: 4.5,
         state: p.tour_spot_schedules,
         name: p.tour_spot_name,
+        adress: p.tour_spot_address,
+        description: p.tour_spot_description
       }
-    });*/
+    });
+
+    setPoints(translatedData);
   }
 
   async function updatePoints(pointType: string) {
+
+
+    const newData: Point[] = testData.map( t => {
+      
+      return {
+        key: t.id,
+        linkImg: t.pictureUrl,
+        rating: 4.5,
+        state: t.schedule,
+        name: t.name,
+        adress: t.adress,
+        description: t.description
+      }
+
+    });
+
+    setPoints(newData);
+    /*
     setLoading(true);
-    //const response = await api.get('/spot?tour_spot_category=tourist_place');
-    //console.log(response.data)
-    setLoading(false);
+    const response = await api.get('/spot?tour_spot_category=tourist_place');
+    translate(response.data[0]);
+    setLoading(false);*/
   }
 
   return (
