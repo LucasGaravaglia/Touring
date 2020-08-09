@@ -7,6 +7,7 @@ import { colors } from "../../styles"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StackScreenProps } from '@react-navigation/stack';
 import RouterDefinition from '../../RouterDefinition';
+import { StatusBar } from 'expo-status-bar';
 
 
 const Logo = require("../../../assets/splash.png")
@@ -55,6 +56,7 @@ const Welcome = ({ route, navigation }: Props) => {
           <Text style={Styles.IndicatorText}>Hospedagem</Text>
         </TouchableOpacity>
       </View>
+      <StatusBar style='light'/>
     </View>
   );
 }

@@ -10,7 +10,11 @@ import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsi
 import { AuthContext } from '../../contexts/authContext';
 const profile = require('../../../assets/profile.png');
 
-const PageNameHere = () => {
+import { StackScreenProps } from '@react-navigation/stack';
+import RouterDefinition from '../../RouterDefinition';
+
+type Props = StackScreenProps<RouterDefinition, 'Menu'>;
+const Menu = ({ route, navigation}: Props) => {
 
   const { signOut, credential } = useContext(AuthContext);
   const [profilePicture, setProfilePicture] = useState({ uri: 'https://i.stack.imgur.com/l60Hf.png'}) ;
@@ -52,7 +56,7 @@ const PageNameHere = () => {
       </View>
 
       <View>
-        <TouchableOpacity style={styles.bottomButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('UserItinerary')} style={styles.bottomButton}>
           <Text style={styles.bottomButtonText}>Meus Roteiros</Text>
           <Feather name="compass" color="#FFF" size={40} />
         </TouchableOpacity>
@@ -62,7 +66,7 @@ const PageNameHere = () => {
   );
 }
 
-export default PageNameHere;
+export default Menu;
 
 const styles = StyleSheet.create({
   container:{
