@@ -1,0 +1,13 @@
+purchase_status
+{
+    0 = prepurchase created
+	1 = purchase created and pending
+	2 = purchase payment completed
+}
+
+error codes:
+Paypal
+{
+    1000 = failed to get paypal access token
+    1001 = failed to genereate paypal payment
+}
