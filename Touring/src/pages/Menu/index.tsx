@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { colors } from '../../styles';
@@ -8,11 +8,21 @@ import style from '../Welcome/style';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
 import { AuthContext } from '../../contexts/authContext';
-const profile = require('../../../assets/profile.jpeg');
+const profile = require('../../../assets/profile.png');
 
 const PageNameHere = () => {
 
-  const { signOut } = useContext(AuthContext);
+  const { signOut, credential } = useContext(AuthContext);
+  const [profilePicture, setProfilePicture] = useState({ uri: 'https://i.stack.imgur.com/l60Hf.png'}) ;
+
+  
+
+  useEffect(() => {
+    if(credential){
+      setProfilePicture({ uri: credential.profilePicture })
+    }
+    
+  }, []);
 
   return(
     <View style={styles.container}>
@@ -20,17 +30,17 @@ const PageNameHere = () => {
       <View style={styles.topContent}>
 
         <View style={styles.rightContent}>
-          <Image style={styles.image} source={profile}/>
+          <Image style={styles.image} source={credential? profilePicture:profile}/>
         </View>
 
         <View style={styles.leftContent}>         
           <TouchableOpacity style={styles.param}>
             <Text style={styles.label}>Nome</Text>
-            <Text style={styles.configText}>Filipe Martins Santos Moreira da Silva</Text>
+            <Text style={styles.configText}>{credential?.name}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.param}>
             <Text style={styles.label}>Email</Text>
-            <Text style={styles.configText}>martinsSnatos@gmail.com</Text>
+            <Text style={styles.configText}>{credential?.email}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={signOut} style={styles.signOutButton}>           
@@ -77,6 +87,7 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   signOutButton:{
+    marginTop: 15,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems:'center',
