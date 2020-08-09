@@ -30,12 +30,17 @@ const PointMap = ({ route, navigation }: Props) => {
 
   const { signOut } = useContext(AuthContext);
   
-  const [ locationToShow, setlocationToShow] = useState({
-    latitude: testData[0].latitude,
-    longitude: testData[0].longitude,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  }); 
+  const initialRegion = {
+    latitude: -25.5427,
+    longitude: -54.5827,
+    latitudeDelta: 0.5,
+    longitudeDelta: 0.2,
+  }
+
+
+  const [ locationToShow, setlocationToShow] = useState(initialRegion); 
+
+  
 
   function handleChangePoint(lat: number, long: number){
     setlocationToShow({
@@ -60,7 +65,7 @@ const PointMap = ({ route, navigation }: Props) => {
 
           <View style={styles.leftHeaderContent}>
             <Text style={styles.headerTitle}>
-              Mapa
+              Explorador
             </Text>   
             <Feather style={styles.menuIcon} name="compass" size={40} color='#FFF'/>
           </View>
@@ -70,7 +75,7 @@ const PointMap = ({ route, navigation }: Props) => {
 
       
       <TouchableWithoutFeedback style={styles.mapStyle} onPress={() => Keyboard.dismiss()}>
-        <MapView  style={styles.mapStyle} region={locationToShow} showsUserLocation={true}>
+        <MapView  style={styles.mapStyle} initialRegion={initialRegion} region={locationToShow} showsUserLocation={true}>
           {
             testData.map( p => {
               return(
