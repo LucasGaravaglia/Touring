@@ -1,28 +1,33 @@
 import React, { createContext, useState } from 'react';
 import { Alert } from 'react-native';
-import points from '../../data/points'
+import testData from '../../data/points'
 import Point from '../../interfaces/Point'
 
 interface UserContextData {
   updatePoints: () => void,
-  points: Point[]
+  points: Array<Point>,
+  loading: boolean
 }
 
 export const UserContext = createContext<UserContextData>({} as UserContextData);
 
 const UserProvider: React.FC = ({ children }) => { 
 
-  const [ points, setPoints ] = useState<Point[]>()
+  const [ points, setPoints ] = useState<Point[]>(testData)
+  const [ loading, setLoading] = useState(false);
 
   function updatePoints() {
-    
+    setLoading(true);
+
+    setLoading(false);
   }
 
   return (
     <UserContext.Provider value={
       {
         updatePoints,
-        points
+        points,
+        loading
       }
     }>
       {children}

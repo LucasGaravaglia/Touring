@@ -1,10 +1,11 @@
-import React, { useContext} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import Styles from "./style"
 import { StackScreenProps } from '@react-navigation/stack';
 import RouterDefinition from "../../RouterDefinition"
 import { UserContext } from '../../contexts/userContext';
 import Point from '../../../interfaces/Point'
+import { StatusBar } from 'expo-status-bar';
 
 const local = require("../../resources/LocalIcon.png")
 const Restaurante = require("../../resources/RestauranteIcon.png")
@@ -14,15 +15,22 @@ const Hospedagem = require("../../resources/HospedagemIcon.png")
 type Props = StackScreenProps<RouterDefinition, 'PointPage'>;
 const PointPage = ({ route, navigation }: Props) => {
 
-  const { updatePoints, points } = useContext(UserContext)
+  const { updatePoints, points, loading } = useContext(UserContext)
 
   function clickHandler(item: Point) {
     navigation.navigate('PointDetails', item)
   }
 
+  useEffect(() => {
+    updatePoints();
+  },[])
+
   return (
     <View style={Styles.container}>
+      <StatusBar style='light' />
       <FlatList
+        keyExtractor={item => String(item.key)}
+        refreshing={loading}
         onRefresh={updatePoints}
         showsVerticalScrollIndicator={false}
         data={points}
@@ -65,7 +73,7 @@ const PointPage = ({ route, navigation }: Props) => {
         </View>
         <View style={Styles.internalContainer}>
           <TouchableOpacity style={Styles.pressArea}>
-            <Image source={Map} />
+           <Image source={Map} />
           </TouchableOpacity>
           <Text style={Styles.text}>Hotéis</Text>
         </View>
