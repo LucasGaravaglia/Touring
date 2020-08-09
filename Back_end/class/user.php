@@ -4,16 +4,18 @@
 
 class user
 {
-	private $user_id;
-	private $user_firstname;
-	private $user_lastname;
-	private $user_cpf;
-	private $user_phone;
-	private $user_address;
-	private $user_email;
-	private $user_image;
-	private $user_type;
+	public $user_id;
+	public $user_firstname;
+	public $user_lastname;
+	public $user_cpf;
+	public $user_phone;
+	public $user_address;
+	public $user_email;
+	public $user_image;
+	public $user_type;
 	public $user_token;
+	public $user_login_method;
+	public $user_first_login;
 	
 	public function __construct($user_token = NULL)
 	{
@@ -31,11 +33,17 @@ class user
 		$this->user_email;
 		$this->user_image;
 		$this->user_type;
+		$this->user_creation_datetime;
 		$this->user_token;
+		$this->user_login_method;		
+		$this->user_first_login;
 	}
 	
-    public function Login($user_email, $user_login_method)
+    public function Login($user_email, $user_login_method, $user_name)
 	{
+		$this->user_email = $user_email;
+		$this->user_login_method = $user_login_method;
+		$this->user_firstname = $user_name;
 		$Database = new Database();
 		$dbconnection = $Database->open();
 		$user = $dbconnection->prepare('SELECT * FROM user WHERE user_email = :user_email');
@@ -52,11 +60,12 @@ class user
 				$this->user_cpf = $userdata["user_cpf"];
 				$this->user_phone = $userdata["user_phone"];
 				$this->user_address = $userdata["user_address"];
-				$this->user_image = $userdata["user_type"];
+				$this->user_image = $userdata["user_image"];
 				$this->user_type = $userdata["user_type"];
+				$this->user_creation_datetime = $userdata["user_creation_datetime"];
 				GetAccessToken($user_login_method);
 			}
-			else $this->RegisterUser($user_email, $user_login_method);		
+			else $this->RegisterUser();		
 		}
 		$dbconnection = $Database->close();
 		return $this->user_token;		
@@ -127,18 +136,20 @@ class user
 		$dbconnection = $Database->close();
 	}
 
-	public function RegisterUser($user_email, $user_login_method)
+	public function RegisterUser()
 	{
 		$user_creation_datetime = date('Y-m-d H:i:s', strtotime(NOW));
 		$Database = new Database();
 		$dbconnection = $Database->open();
-		$register_user = $dbconnection->prepare("INSERT INTO user (user_email, user_creation_datetime) VALUES (:user_email, :user_creation_datetime)");
+		$register_user = $dbconnection->prepare("INSERT INTO user (user_firstname, user_email, user_creation_datetime) VALUES (:user_firstname, :user_email, :user_creation_datetime)");
 		$register_user->bindParam(':user_creation_datetime', $user_creation_datetime);
-		$register_user->bindParam(':user_email', $user_email, PDO::PARAM_STR);
+		$register_user->bindParam(':user_firstname', $this->user_firstname, PDO::PARAM_STR);
+		$register_user->bindParam(':user_email', $this->user_email, PDO::PARAM_STR);
 		if ($register_user->execute())
 		{
 			$this->user_id = $dbconnection->lastInsertId();
             $this->GetAccessToken($user_login_method);
+			$this->user_first_login = 1;
 		}
 		$dbconnection = $Database->close();	
 	}
