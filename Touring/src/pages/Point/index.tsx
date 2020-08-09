@@ -57,7 +57,7 @@ interface PointProps {
   }
 }
 // type Props = StackScreenProps<RouterDefinition, 'FindTouristSpot'>;
-const FindTouristSpot = ({ route, navigation }: Props) => {
+const Point = ({ route, navigation }: Props) => {
   const renderItem = (param: PointProps) => {
     return (
       <View style={Styles.containerSpot}>
@@ -120,4 +120,4 @@ const FindTouristSpot = ({ route, navigation }: Props) => {
   );
 }
 
-export default FindTouristSpot;
+export default Point;
