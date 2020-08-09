@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import Styles from './styles';
 import { StackScreenProps } from '@react-navigation/stack';
-import { Roboto_500Medium, useFonts, Roboto_400Regular } from '@expo-google-fonts/roboto';
+import { Roboto_500Medium, useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { Feather } from '@expo/vector-icons';
 // import RouterDefinition from "../../RouterDefinition"
 
@@ -66,7 +66,8 @@ const PointAttractions = () => {
   // navigation.navigate("",)
   const [fontsLoaded] = useFonts({
     Roboto_500Medium,
-    Roboto_400Regular
+    Roboto_400Regular,
+    Roboto_700Bold
   });
   if (!fontsLoaded)
     return (
