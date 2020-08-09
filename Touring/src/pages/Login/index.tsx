@@ -6,6 +6,7 @@ import { useFonts } from '@expo-google-fonts/ubuntu';
 import { Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import RootStackParamList from '../../RouterDefinition';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
+import { StatusBar } from 'expo-status-bar';
 
 import { AuthContext } from '../../contexts/authContext';
 
@@ -45,6 +46,7 @@ const LoginPage = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      
       <View style={Styles.container}>
 
         <TouchableOpacity style={Styles.langButton}>

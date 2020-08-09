@@ -37,8 +37,18 @@ function Routes() {
       </View>
     );
 
+  if(!authenticated){
+    return (
+      <> 
+        <StatusBar style='light'/>
+        <Login />
+      </>
+    )
+  }
+    
+
   return (
-    <Stack.Navigator initialRouteName="Welcome" >
+    <Stack.Navigator initialRouteName="Menu" >
       <Stack.Screen name="PointPage" component={PointPage} options={{headerRight:(headerLogo), headerTitle: (''), headerLeft: (headerIcon), headerStyle: { backgroundColor: '#1F8DBC'}}} />
       <Stack.Screen name="PointDetails" component={PointDetails} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: ('Detalhes'), headerStyle: { backgroundColor: '#1F8DBC'}  })} />
       <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
@@ -46,7 +56,7 @@ function Routes() {
       <Stack.Screen name="UserItinerary" component={UserItinerary} />
       <Stack.Screen name="PointMap" component={PointMap} />
       <Stack.Screen name="PointAttractions" component={PointAttractions} />
-      <Stack.Screen name="Menu" component={Menu} />
+      <Stack.Screen name="Menu" component={Menu} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: (''), headerStyle: { backgroundColor: '#1F8DBC'}  })}/>
       <Stack.Screen name="Comments" component={Comments} />
       <Stack.Screen name="AttractionsDetails" component={AttractionsDetails} />
     </Stack.Navigator>
