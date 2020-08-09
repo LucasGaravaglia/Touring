@@ -15,7 +15,7 @@ const Hospedagem = require("../../resources/HospedagemIcon.png")
 type Props = StackScreenProps<RouterDefinition, 'PointPage'>;
 const PointPage = ({ route, navigation }: Props) => {
 
-  const { updatePoints, points } = useContext(UserContext)
+  const { updatePoints, points, loading } = useContext(UserContext)
 
   function clickHandler(item: Point) {
     navigation.navigate('PointDetails', item)
@@ -29,6 +29,9 @@ const PointPage = ({ route, navigation }: Props) => {
     <View style={Styles.container}>
       <StatusBar style='light' />
       <FlatList
+        keyExtractor={item => String(item.key)}
+        refreshing={loading}
+        onRefresh={updatePoints}
         showsVerticalScrollIndicator={false}
         data={points}
         renderItem={( {item} ) => {

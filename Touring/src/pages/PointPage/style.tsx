@@ -16,7 +16,8 @@ export default StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     margin: 10,
-    borderRadius: 15
+    borderRadius: 15,
+    elevation: 5
   },
   Flat: {
     marginTop: 10
