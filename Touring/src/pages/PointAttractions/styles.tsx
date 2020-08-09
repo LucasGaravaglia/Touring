@@ -55,7 +55,7 @@ export default StyleSheet.create({
   textButton: {
     fontSize: 15,
     color: "#fff",
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'Roboto_700Bold',
   },
   containerButtons: {
     flexDirection: "row",
