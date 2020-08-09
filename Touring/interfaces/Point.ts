@@ -3,7 +3,10 @@ interface Point {
     linkImg: string,
     rating: number,
     state: string,
-    name: string
+    name: string,
+    description: string,
+    adress: string
 }
 
 export default Point;
+
