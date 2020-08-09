@@ -4,19 +4,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar'
 
-import FindCity from './pages/client/UserItinerary';
-
-import UserRegister from './pages/client/TouristSpotAttractions';
+import UserRegister from './pages/PointDetails';
 
 import Login from './pages/Login';
 
 import AuthProvider, { AuthContext } from './contexts/authContext';
+import UserProvider from './contexts/userContext';
 const Stack = createStackNavigator();
 
 function Routes() {
 
   const { authenticated, loading, firstLoginChecker, fisrtLoginChecked } = useContext(AuthContext);
-
 
   if (loading)
     return (
@@ -30,20 +28,19 @@ function Routes() {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="FindCity" component={FindCity} /> */}
-
       <Stack.Screen name="UserRegister" component={UserRegister} />
     </Stack.Navigator>
   );
 }
-
 
 function Router() {
   return (
     <NavigationContainer>
       <StatusBar style='light' />
       <AuthProvider>
-        <Routes />
+        <UserProvider>
+          <Routes />
+        </UserProvider>
       </AuthProvider>
     </NavigationContainer>
   );
