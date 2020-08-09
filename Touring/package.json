@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/rancho": "^0.1.0",
     "@expo-google-fonts/roboto": "^0.1.0",
     "@expo-google-fonts/ubuntu": "^0.1.0",
     "@expo/vector-icons": "^10.0.0",
