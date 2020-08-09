@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Styles from './styles';
 import { StackScreenProps } from '@react-navigation/stack';
-// import RouterDefinition from "../../RouterDefinition"
+ import RouterDefinition from "../../RouterDefinition"
 
 const ArrowRight = require("../../resources/RightArrow.png")
 
@@ -31,9 +31,9 @@ interface PointProps {
   }
 }
 
-// type Props = StackScreenProps<RouterDefinition, 'PointDetails'>;
-const PointDetails = () => {
-  // navigation.navigate("",)
+ type Props = StackScreenProps<RouterDefinition, 'PointDetails'>;
+const PointDetails = ({ route, navigation }: Props) => {
+
   return (
     <View style={Styles.container}>
       <Image style={Styles.imagem} source={{ uri: data.linkImg }} />
