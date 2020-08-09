@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 09-Ago-2020 às 15:50
--- Versão do servidor: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Host: fdb30.atspace.me
+-- Generation Time: 09-Ago-2020 às 21:41
+-- Versão do servidor: 5.7.20-log
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hackaton`
+-- Database: `3537604_hackatour`
 --
 
 -- --------------------------------------------------------
@@ -64,8 +64,10 @@ CREATE TABLE `tour_requests` (
 CREATE TABLE `tour_spots` (
   `tour_spot_id` int(11) NOT NULL,
   `tour_spot_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `tour_spot_phone` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tour_spot_schedules` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `tour_spot_location` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tour_spot_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `tour_spot_city` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `tour_spot_category` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `tour_spot_description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
@@ -76,8 +78,14 @@ CREATE TABLE `tour_spots` (
 -- Extraindo dados da tabela `tour_spots`
 --
 
-INSERT INTO `tour_spots` (`tour_spot_id`, `tour_spot_name`, `tour_spot_schedules`, `tour_spot_location`, `tour_spot_city`, `tour_spot_category`, `tour_spot_description`, `tour_spot_image`) VALUES
-(1, 'Parque das Aves', 'Domingo à Segunda, 07:30~18:00', '-25.6136381,-54.4845447', 'Foz do Iguaçu', 'tourist_place', 'Visite o Parque das Aves', 'https://www.umviajante.com.br/wp-content/uploads/2015/07/parque-das-aves-foz-011-1280x720.jpg');
+INSERT INTO `tour_spots` (`tour_spot_id`, `tour_spot_name`, `tour_spot_phone`, `tour_spot_schedules`, `tour_spot_location`, `tour_spot_address`, `tour_spot_city`, `tour_spot_category`, `tour_spot_description`, `tour_spot_image`) VALUES
+(1, 'Parque das Aves', '(45) 3529-8282', 'Terça a domingo, das 8h30 às 17h', '-25.6136332,-54.4867334', 'Av. das Cataratas, 12450 - Vila Yolanda', 'Foz do Iguaçu - PR', 'tourist_place', 'Visite o Parque das Aves para ver as raras espécies de aves', 'https://lh3.ggpht.com/p/AF1QipOTplHOHh3FKRywPIwIMJ9_5uGY-6QBrZZ10Fxp=s512'),
+(2, 'Mabu Thermas Grand Resort', '(45) 3132-2000', 'Todos os dias 24h', '-25.5673659,-54.5572323', 'Av. das Cataratas, 3175 - Vila Yolanda', 'Foz do Iguaçu - PR', 'hotel', 'Visite o Hotel Mabu', 'https://q-cf.bstatic.com/images/hotel/max1024x768/253/253940176.jpg'),
+(3, 'Rafain Churrascaria Show', '(45) 3523-1177', 'Segunda à Sábado, 19:00 às 23:00 e Domingo 11:30 às 16:00', '-25.5564687,-54.5660356', 'Av das Cataratas, 101', 'Foz do Iguaçu - PR', 'restaurant', 'Almoce ou jante na maior churrascaria de Foz do Iguaçu', 'https://cdipg.s3.amazonaws.com/foz_do_iguacu/events/photos/000/000/117/show/05_rafa.jpg'),
+(4, 'Cataratas do Iguaçu', '(45) 3521-4400', 'Todos os dias, das 09:00 às 19:00', '-25.6175807,-54.4789895', 'Av das Cataratas, 755', 'Foz do Iguaçu', 'tourist_place', 'Veja de perto a maior queda de água do país', 'https://s2.glbimg.com/T2Hf6r1Pyp1vuvjkkNIz3NTd0BM=/0x0:1280x848/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/0/p/20GTC7SBuuNbHXt6xRK'),
+(5, 'Bourbon Cataratas do Iguaçu Resort', '(45) 3521-3900', 'Todos os dias 24h', '-25.559867,-54.5616859', 'Av. das Cataratas, 2345 - Vila Yolanda', 'Foz do Iguaçu', 'hotel', 'Visite o Hotel Bourbon', 'https://media-cdn.tripadvisor.com/media/photo-s/0f/39/37/25/bourbon-cataratas-convention.jpg'),
+(6, 'Usina Hidrelétrica de Itaipu', '(45) 3576-7000', 'Todos os dias, das 08:00 às 17:00', '-25.4468097,-54.5850724', 'Av. Tancredo Neves, 6702', 'Foz do Iguaçu', 'tourist_place', 'A maior usina hidrelétrica do mundo', 'https://www.itaipu.gov.br/sites/default/files/itaipu2015_logo.png'),
+(7, 'City Bier Petiscaria', '(45) 3025-3977', 'Segunda à Sábado, das 11:00 às 22:00', '-25.5431319,-54.5840887', 'Rua Quintino Bocaiúva, 1088 - Centro', 'Foz do Iguaçu - PR', 'restaurant', 'Carnes na chapa, feijoada, chopes, drinques e mais em espaço descontraído, com tijolo aparente e área externa', 'https://media-cdn.tripadvisor.com/media/photo-s/09/c1/3e/26/city-bier.jpg');
 
 -- --------------------------------------------------------
 
@@ -93,6 +101,29 @@ CREATE TABLE `tour_spots_attractives` (
   `attractive_description` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `attractive_images` varchar(1000) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tour_spots_content`
+--
+
+CREATE TABLE `tour_spots_content` (
+  `tour_spot_content_id` int(11) NOT NULL,
+  `tour_spot_content_spot_id` int(11) NOT NULL,
+  `tour_spot_content_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `tour_spot_content_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tour_spot_content_description` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `tour_spot_content_url` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `tour_spots_content`
+--
+
+INSERT INTO `tour_spots_content` (`tour_spot_content_id`, `tour_spot_content_spot_id`, `tour_spot_content_name`, `tour_spot_content_type`, `tour_spot_content_description`, `tour_spot_content_url`) VALUES
+(1, 1, 'Papagaios', 'image', 'Veja passarinhos coloridos como a Arara Azul', 'https://www.h2foz.com.br/fl/normal/noticia_578422_img1_araras.jpg'),
+(2, 1, 'O que é o Parque das Aves', 'youtube_video', 'Explicação do parque', 'https://www.youtube.com/watch?v=Fss3MDeQxHQ');
 
 -- --------------------------------------------------------
 
@@ -168,7 +199,11 @@ INSERT INTO `user_login_token` (`user_login_token_id`, `user_login_user_id`, `us
 (10, 1, 'Google', '8051639a728eccabaee5798e2a08cb4be3e0cb6ced716cc32693b73828280d8d1f9c877dd22f1c1856d7eb0ca43b670d05ed44dd1cea106ee1a7bf951dab20c04f1feb436e20a2150548d1dd1d6af9e0cc09ecd0753fb75fb954078674ca3921ff81131bfe79ee50c1c16f12f277938751f83a74c5693b1a3ed7254c2d7fa553f3e205ff08e48ff4c72df4cfed3d4ff80538f41efb732e1f2dece939b9b36412024f29b7f4582959448bd962bfba6ebc9c5fe1bee09b9ef408b781398e5b4afafbe8cb5182fcbba8ddaf2d1a2c671ece1b85e19d4c6b96c8ffc19c682597b5528f1c5b48ec050fc77270a68859bc5b810a5db605ed5d04fa26862e9b60673b84', '2020-08-12 02:47:38', '::1'),
 (11, 2, 'Facebook', '6aef1eb178e6682b5e8ee205a7ac7b38316f6e3910a8e7958d9a06af62c50ec15c571bc6b742a0a233137c5347e49e4e162cbff7019bf0b1d9cc3e55406442b5a14575e780559c9f3180b5126a482c71dea27069c6f47e6149847363040949aa40398abf3574778e5965e4065a221df197ba475e8f87665394a4fa726ad0c7056a6449a1aa4806530d24a2000ec582e33c2f4a4dad54806619e2209152f182750fbc965aed36cce35ba9e2542a1a32ed9278b64066bc6aad77548a06009a541344a71ba36a5ee35c185101750496e7936b588a2dc8fbf318db7c15a39f875ab4812d489048836d56710a300f6d88108b2426e5c3b6ff041046ce8456e53f939c', '2021-08-09 03:09:36', '::1'),
 (12, 2, 'Facebook', '3ea097954cea34af1f33e242d0b327043743c3920ca1206d7fb1b7982812f802d730c483b237090f20e520bed1a2a8ce65743df4ba15555d6947c34485c9c7bd6d57850f5fd7d9c8f86dadb938f81c824b86e863f34a1524754b65314da6e97a73181edb05080923239a04ceb56c9f76a451b2b0df740a68ca63e9f9700a57e9e05348c74849f3d567199d1be497a9cdc0c07d0b699c258c491c2ed4a6b6c709359430343b1f2cf60627b6e45e128c27eec3c9eac3c7cbd5d3488c226c6c935c18e6fe615318f8580d84058f1fcc42933a443cafc9fb948240ecc78b819e3a43ee7db9f2e77efceb0ab59e8081490bf86a849b68a20bdbebd241eb33177942e7', '2021-08-09 03:24:15', '::1'),
-(13, 2, 'Facebook', '83e9951bf4a841c994e36963e8b0c388b2dce15fe43ee82ae2f8ea001cc9f4e3025faa9152dd4cb8b4ca8a823cbbf9dc3931fcc502bbecd5a3a20a63482b506c1664768a9add576d33f7e5e08644ff8d4702a45fe25fbaeace3a0b43f7396a7a88eb92fd5aa6f0c103e0f1481021f400f855a17b6b0481429c2f215e3e5b93a957f88707d8f094b5ffa776a1c790aaa769ec8737f0260ae72898160a86350f63d5ca25ce220ca906b4634f81ada14b8d294c4e6898c75dbd8998deb49c8048dfa4e4e76ae9eaf1722afd7d8b757fda99f8e67bb8572a2342ef8e2d841799456975b5d0c0ad9f96e44a48a45987d1571f01e338a77bc87c3c86d6bb1963ee80c1', '2021-08-09 03:25:17', '::1');
+(13, 2, 'Facebook', '83e9951bf4a841c994e36963e8b0c388b2dce15fe43ee82ae2f8ea001cc9f4e3025faa9152dd4cb8b4ca8a823cbbf9dc3931fcc502bbecd5a3a20a63482b506c1664768a9add576d33f7e5e08644ff8d4702a45fe25fbaeace3a0b43f7396a7a88eb92fd5aa6f0c103e0f1481021f400f855a17b6b0481429c2f215e3e5b93a957f88707d8f094b5ffa776a1c790aaa769ec8737f0260ae72898160a86350f63d5ca25ce220ca906b4634f81ada14b8d294c4e6898c75dbd8998deb49c8048dfa4e4e76ae9eaf1722afd7d8b757fda99f8e67bb8572a2342ef8e2d841799456975b5d0c0ad9f96e44a48a45987d1571f01e338a77bc87c3c86d6bb1963ee80c1', '2021-08-09 03:25:17', '::1'),
+(14, 2, 'Facebook', '20a3409ad3baea22c2dbbb25c5b918640199210c63feae802593daae0d541dd5fec5a0772dd297a77186f67e66362d41c823a638867386b78754b71c79dd63a011798a7e58ee4f109e27631b28d15087a928c580826fa25e875674f2694d9393b582d160b4f2f1da2a921dd8fecaab06ddca832ce2ef696e6246d776b0c91b3ba71c100fa0b664e0ce56da64bca64afbf57e54e0e26469ebf30f7b04bdf4d1f88f5168b649aeb0cd60cd02425d95ba4039b3cb83d8521d4e3dda5a48e337a00a605eb396cd6c923b36426d85bed8bdf7014b76c493414eb4b40bbe9d40bac647668b50803511bb4a80876257a550e2c476c650de1737a6179be6a6b9893468c9', '2021-08-09 14:48:27', '::1'),
+(15, 2, 'Facebook', '5b137299eff88b848ed4c5c048f1b3dbb877e3a5b7b47809aeef25d9e4954eaab78d316dbc53f0a4dcc8197334ea3d15ddee4df61818cf0bead3e373c75166a18639536eb7b213067345fdb5ebe43d778999718f9a13532aadab30d00214380eecb6b207ca0d40fb05b51bfdcc76cf69c1ea149b77d686b06f6b9324aa389632e23b8b8ebae2026ac7473271baf8995540f9825e790d712a7b8eb83c7faf7aa844ec4ae09cb69372d3ab48804e1ba84c9d5673a8305c3d7dc175e7cbf2106524a641c8ddde8afa2d928d20ec3a87383fc8071f4f17aabacee5bea1541630770593eeb93947cd8d6985d813f06d2bf12d7a93b96a1641592738d688e96a7973f7', '2021-08-09 17:07:51', '::1'),
+(16, 2, 'Facebook', '95864752ad8554350a21a6ffeecabd39108e5c889780c4b48cae960decd198f638d95d25c035ac8d734ddd5219148fc317d08c2a55d5679f992220757ea562958ceaca83691f12333ab1d90a380abe23bdce1ede6323df906515e3839b7d79c119d3f5653dbdded042ebf156ee2757d0a4c728f785f636b8b5ed1667a80ab2a39534d0589b9edb6c14b5e33341012b9d378974497eab5ad14e198d2bc57204b77686471c0557537a49cbcf9dbf6f8e9af9f4e0c5773f84a2ed361b5ea38ac8c9c987836e512661b78033dc2351e6155bda4f9bcd3668caaf9b93f922c2424761eaee51c30acd1217e2349757ff053935f4e4ff1789debdca97dcb19f5820fcf4', '2021-08-09 17:20:56', '::1'),
+(17, 1, 'Google', '480e972f34c92856c333979ab30b95297adac2c72ea60fa4b74015879727ca6b5afe840cb85ba1fa6bc1ec76459383779cde3f708654e2f82a343cfee6d5e6d1a76d6ca0af57c5890c4b64b1e8393b4f216d1f6c5c310dd5ea79150a5e2e317a74ae0b57b4e39500e9c5d9735a4bbf5a1cfd00130d0966752c0b278e9f676b0f2f4da7d5c948b5abfabb08f5c5733835afae9bbec7bdad0ffcda349024e3ba30b4c0716b6e8413c42554723af65aecce20003f5dc2be0ae42d50f3f47be967724b3369727bf9321d99d13bf8a5b0d0da1db45d9e2c1eb0b0cdd606235091c5f1371b14fc7b826ccde62e05af9f4335b395d286435c84c7eb1431b2f348d0ecce', '2021-08-09 17:37:21', '45.184.108.35');
 
 --
 -- Indexes for dumped tables
@@ -197,6 +232,12 @@ ALTER TABLE `tour_spots`
 --
 ALTER TABLE `tour_spots_attractives`
   ADD PRIMARY KEY (`attractive_id`);
+
+--
+-- Indexes for table `tour_spots_content`
+--
+ALTER TABLE `tour_spots_content`
+  ADD PRIMARY KEY (`tour_spot_content_id`);
 
 --
 -- Indexes for table `tour_spots_rate`
@@ -234,12 +275,17 @@ ALTER TABLE `tour_requests`
 -- AUTO_INCREMENT for table `tour_spots`
 --
 ALTER TABLE `tour_spots`
-  MODIFY `tour_spot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tour_spot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tour_spots_attractives`
 --
 ALTER TABLE `tour_spots_attractives`
   MODIFY `attractive_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tour_spots_content`
+--
+ALTER TABLE `tour_spots_content`
+  MODIFY `tour_spot_content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tour_spots_rate`
 --
@@ -254,7 +300,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_login_token`
 --
 ALTER TABLE `user_login_token`
-  MODIFY `user_login_token_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_login_token_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

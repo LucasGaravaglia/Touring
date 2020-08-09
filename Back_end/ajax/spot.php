@@ -7,10 +7,10 @@ $Functions->GenerateHeader("json");
 if (isset($_GET['tour_spot_category']) && !empty($_GET['tour_spot_category']))
 {
 	$tour_spot_category = filter_input(INPUT_GET, 'tour_spot_category', FILTER_DEFAULT);
-	if ($tour_spot_category === "tourist_place" || $tour_spot_category === "restaurant")
+	if ($tour_spot_category === "tourist_place" || $tour_spot_category === "restaurant" || $tour_spot_category === "hotel")
 	{
 		require_once "../class/spot.php";
-		$spot = new spot("GetTourSpots", $tour_spot_category);
+		$spot = new spot("GetTourSpots", $tour_spot_category, NULL);
 		$response = $spot->tour_spot_list;
 		$spot = null;
 		$Functions->KillPage($response);
