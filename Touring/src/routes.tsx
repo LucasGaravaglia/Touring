@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View, ActivityIndicator, StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { Feather } from '@expo/vector-icons';
 
@@ -16,6 +16,8 @@ import PointPage from './pages/PointPage';
 import Menu from './pages/Menu';
 import Comments from './pages/Comments';
 import AttractionsDetails from './pages/AttractionsDetails';
+
+import RouterDefinition from './RouterDefinition';
 
 const logo = require('../assets/Touring.png');
 
@@ -34,15 +36,11 @@ function Routes() {
         <ActivityIndicator color="#FFF" size={60} />
       </View>
     );
-/*
 
-  if (!authenticated)
-    return (<Login />)
-*/
   return (
     <Stack.Navigator initialRouteName="Welcome" >
       <Stack.Screen name="PointPage" component={PointPage} options={{headerRight:(headerLogo), headerTitle: (''), headerLeft: (headerIcon), headerStyle: { backgroundColor: '#1F8DBC'}}} />
-      <Stack.Screen name="PointDetails" component={PointDetails} />
+      <Stack.Screen name="PointDetails" component={PointDetails} options={({ route, navigation}) => ({ headerLeft: (() => arrowBack(navigation)), headerLeftContainerStyle:{ color: '#FFF'}, headerRight:(headerLogo), headerTitleStyle:{color: '#FFF'},  headerTitle: ('Detalhes'), headerStyle: { backgroundColor: '#1F8DBC'}  })} />
       <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
       <Stack.Screen name="Videos" component={Videos} />
       <Stack.Screen name="UserItinerary" component={UserItinerary} />
@@ -51,7 +49,6 @@ function Routes() {
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Comments" component={Comments} />
       <Stack.Screen name="AttractionsDetails" component={AttractionsDetails} />
-
     </Stack.Navigator>
   );
 }
@@ -67,6 +64,15 @@ function Router() {
       </AuthProvider>
     </NavigationContainer>
   );
+}
+
+type ProfileScreenNavigationProp = StackNavigationProp<
+  RouterDefinition,
+  'PointDetails'
+>;
+
+const arrowBack = (navigation: ProfileScreenNavigationProp) => {
+  return <Feather onPress={() => navigation.navigate('PointPage')} style={{marginLeft: 10}} name="arrow-left" color="#FFF" size={30} />
 }
 
 const headerIcon = () => {

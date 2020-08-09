@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import Styles from "./style"
 import { StackScreenProps } from '@react-navigation/stack';
@@ -16,14 +16,22 @@ type Props = StackScreenProps<RouterDefinition, 'PointPage'>;
 const PointPage = ({ route, navigation }: Props) => {
 
   const { updatePoints, points, loading } = useContext(UserContext)
+  const [currentPointType, setCurrentPointType] = useState('tourist_place');
 
   function clickHandler(item: Point) {
     navigation.navigate('PointDetails', item)
   }
 
+  function handleUpdatePage(pointType: string){
+
+   setCurrentPointType(pointType);
+   updatePoints(pointType);
+
+  }
+
   useEffect(() => {
-    updatePoints();
-  },[])
+    updatePoints(currentPointType);
+  }, [])
 
   return (
     <View style={Styles.container}>
@@ -31,7 +39,7 @@ const PointPage = ({ route, navigation }: Props) => {
       <FlatList
         keyExtractor={item => String(item.key)}
         refreshing={loading}
-        onRefresh={updatePoints}
+        onRefresh={() => updatePoints(currentPointType)}
         showsVerticalScrollIndicator={false}
         data={points}
         renderItem={( {item} ) => {
@@ -60,25 +68,25 @@ const PointPage = ({ route, navigation }: Props) => {
       />
       <View style={Styles.containerOptions}>
         <View style={Styles.internalContainer}>
-          <TouchableOpacity style={Styles.pressArea}>
+          <TouchableOpacity onPress={() => handleUpdatePage('tourist_place')} style={Styles.pressArea}>
             <Image source={local} />
           </TouchableOpacity>
           <Text style={Styles.text}>Pontos Turísticos</Text>
         </View>
         <View style={Styles.internalContainer}>
-          <TouchableOpacity style={Styles.pressArea}>
+          <TouchableOpacity onPress={() => handleUpdatePage('restaurant')}  style={Styles.pressArea}>
             <Image source={Restaurante} />
           </TouchableOpacity>
           <Text style={Styles.text}>Restaurante</Text>
         </View>
         <View style={Styles.internalContainer}>
-          <TouchableOpacity style={Styles.pressArea}>
+          <TouchableOpacity onPress={() => handleUpdatePage('hotel')} style={Styles.pressArea}>
            <Image source={Map} />
           </TouchableOpacity>
           <Text style={Styles.text}>Hotéis</Text>
         </View>
         <View style={Styles.internalContainer}>
-          <TouchableOpacity style={Styles.pressArea}>
+          <TouchableOpacity  style={Styles.pressArea}>
             <Image source={Hospedagem} />
           </TouchableOpacity>
           <Text style={Styles.text}>Mapa</Text>
