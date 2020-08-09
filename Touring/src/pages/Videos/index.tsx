@@ -2,13 +2,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const PageNameHere = () => {
-  return(
+const Video = () => {
+  return (
     <View>
-      <Text>PageNameHere</Text>
+      <Text>Video</Text>
     </View>
   );
 }
 
-export default PageNameHere;
+export default Video;
 

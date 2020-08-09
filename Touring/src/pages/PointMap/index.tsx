@@ -2,13 +2,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const PageNameHere = () => {
-  return(
+const PointMap = () => {
+  return (
     <View>
-      <Text>PageNameHere</Text>
+      <Text>PointMap</Text>
     </View>
   );
 }
 
-export default PageNameHere;
+export default PointMap;
 
