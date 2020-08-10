@@ -30,6 +30,7 @@ const PointPage = ({ route, navigation }: Props) => {
     updatePoints(currentPointType);
   }, [])
 
+ 
   return (
     <View style={Styles.container}>
       <StatusBar style='light' />

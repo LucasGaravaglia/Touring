@@ -36,34 +36,35 @@ const PointDetails = ({ route, navigation }: Props) => {
 
   return (
     <View style={Styles.container}>
-      <Image style={Styles.imagem} source={{ uri: data.linkImg }} />
+      <Image style={Styles.imagem} source={{ uri: route.params.linkImg }} />
 
       <View style={Styles.containerDetails}>
 
         <Text style={Styles.title}>
-          {data.name}
+          {route.params.name}
         </Text>
         <Text style={Styles.text}>
-          {data.avaliation}
+          {route.params.rating}
         </Text>
         <Text style={Styles.description}>
-          {data.description}
+          {route.params.description}
         </Text>
         <View style={Styles.additionalContainer}>
           <Text style={Styles.additional}>
-            {data.address}
+            {route.params.adress}
           </Text>
           <Text style={Styles.additional}>
             Telefone: {data.phone}
           </Text>
           <Text style={Styles.additional}>
-            {data.state}
+            {route.params.state}
           </Text>
         </View>
       </View>
 
 
       <TouchableOpacity
+      onPress={() => navigation.navigate('PointAttractions', route.params)}
         style={Styles.button}
       >
         <Text style={Styles.textButton}>Atrações</Text>

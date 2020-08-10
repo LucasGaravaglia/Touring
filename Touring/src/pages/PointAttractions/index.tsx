@@ -4,43 +4,43 @@ import Styles from './styles';
 import { StackScreenProps } from '@react-navigation/stack';
 import { Roboto_500Medium, useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { Feather } from '@expo/vector-icons';
-// import RouterDefinition from "../../RouterDefinition"
+import RouterDefinition from "../../RouterDefinition"
 
+const atra1 = require('../../../assets/atra1.png');
+const atra2 = require('../../../assets/ata2.png');
+const atra3 = require('../../../assets/atra3.png');
+const atra4 = require('../../../assets/atra1.png');
 
-const data = {
-  name: "Marco das três fronteiras",
-  state: "Aberto - Fecha 18h",
-  avaliation: 4,
-  key: 5,
-  description: "O Parque das Aves é um parque temático localizado na cidade de Foz do Iguaçu, no estado brasileiro do Paraná. Situado próximo às Cataratas do rio Iguaçu, o parque possui 16 hectares de mata nativa, com 1.500 animais entre aves, répteis e mamíferos, ",
-  address: "Av. Gen. Meira, s/n - Jardim Eldorado, Foz do Iguaçu - PR, 85853-110",
-  phone: "999087584",
-  linkImg: "https://www.loumarturismo.com.br/passeios/imagens/00013/1923-show-de-luzes-e-aguas-marco-tres-frontei.jpg",
-  attractions: [
-    {
-      img: "https://cdipg.s3.amazonaws.com/foz_do_iguacu/events/photos/000/000/098/show/ave.jpg?1556805411",
-      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão com a Mata Atlântica ",
-      name: "Vista panoramica"
+const data = [
+  
+    { 
+      key: 1,
+      img: atra1,
+      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão",
+      name: "Tour Historico"
     },
     {
-      img: "https://cdipg.s3.amazonaws.com/foz_do_iguacu/events/photos/000/000/098/show/ave.jpg?1556805411",
-      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão com a Mata Atlântica ",
+      key: 2,
+      img: atra2,
+      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão",
+      name: "Vista interna"
+    },
+    {
+      key: 3,
+      img: atra3,
+      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão",
       name: "vista panoramica"
     },
     {
-      img: "https://cdipg.s3.amazonaws.com/foz_do_iguacu/events/photos/000/000/098/show/ave.jpg?1556805411",
-      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão com a Mata Atlântica ",
-      name: "vista panoramica"
-    },
-    {
-      img: "https://cdipg.s3.amazonaws.com/foz_do_iguacu/events/photos/000/000/098/show/ave.jpg?1556805411",
-      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão com a Mata Atlântica ",
-      name: "vista panoramica"
+      key: 4,
+      img: atra4,
+      description: "Quem visita Foz do Iguaçu não pode deixar de viver a experiência de conexão",
+      name: "Paseio explorador"
     },
   ]
 
 
-}
+
 interface PointProps {
   item: {
     key: number,
@@ -61,9 +61,8 @@ interface PointProps {
   }
 }
 
-// type Props = StackScreenProps<RouterDefinition, 'PointDetails'>;
-const PointAttractions = () => {
-  // navigation.navigate("",)
+ type Props = StackScreenProps<RouterDefinition, 'PointAttractions'>;
+const PointAttractions = ({ route, navigation } : Props) => {
   const [fontsLoaded] = useFonts({
     Roboto_500Medium,
     Roboto_400Regular,
@@ -77,21 +76,23 @@ const PointAttractions = () => {
     );
   return (
     <View style={Styles.container}>
-      <Image style={Styles.imagem} source={{ uri: data.linkImg }} />
+      <Image style={Styles.imagem} source={{ uri: route.params.linkImg }} />
 
       <View style={Styles.containerDetails}>
 
         <Text style={Styles.title}>
-          {data.name}
+          {route.params.name}
         </Text>
         <View style={Styles.containerButtons}>
           <TouchableOpacity
+            onPress={() => navigation.navigate('Videos')}
             style={Styles.button}
           >
             <Text style={Styles.textButton}>Videos</Text>
             <Feather name="arrow-right-circle" color="#fff" size={25} />
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate('Videos')}
             style={Styles.button}
           >
             <Text style={Styles.textButton}>Comentários</Text>
@@ -101,15 +102,15 @@ const PointAttractions = () => {
         <FlatList
           // onRefresh={updatePoints}
           showsVerticalScrollIndicator={false}
-          data={data.attractions}
+          data={data}
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
                 style={Styles.containerSpot}
-              // onPress={() => clickHandler(item)}
+              
               >
 
-                <Image style={Styles.imagemAttractions} source={{ uri: item.img }} />
+                <Image style={Styles.imagemAttractions} source={item.img} />
                 <View style={Styles.containerText}>
 
                   <View style={Styles.containerPlusAttractions}>

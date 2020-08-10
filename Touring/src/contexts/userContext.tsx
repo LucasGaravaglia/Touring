@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import testData from '../../data/pontosTuristicos';
 import Point from '../../interfaces/Point'
@@ -26,7 +26,7 @@ export const UserContext = createContext<UserContextData>({} as UserContextData)
 
 const UserProvider: React.FC = ({ children }) => { 
 
-  const [ points, setPoints ] = useState<Point[]>(testData)
+  const [ points, setPoints ] = useState<Point[]>({} as Point[])
   const [ loading, setLoading] = useState(false);
 
 
@@ -47,9 +47,7 @@ const UserProvider: React.FC = ({ children }) => {
     setPoints(translatedData);
   }
 
-  async function updatePoints(pointType: string) {
-
-
+  function updatePoints(pointType: string) {
     const newData: Point[] = testData.map( t => {
       
       return {
@@ -63,8 +61,9 @@ const UserProvider: React.FC = ({ children }) => {
       }
 
     });
-
     setPoints(newData);
+
+    
     /*
     setLoading(true);
     const response = await api.get('/spot?tour_spot_category=tourist_place');
@@ -86,3 +85,5 @@ const UserProvider: React.FC = ({ children }) => {
 }
 
 export default UserProvider;
+
+
