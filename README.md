@@ -30,3 +30,13 @@
   <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/AttractionDetails.png" width="20%">
   <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/Menu.png" width="20%">
 </p>
+
+## Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [PHP](https://www.php.net/)
+- [React Native](https://facebook.github.io/react-native/)
+- [Expo](https://expo.io/)
+- [MYSQL](https://www.mysql.com/)
+- [FIGMA](https://www.figma.com/)
