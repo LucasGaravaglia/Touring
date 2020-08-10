@@ -5,3 +5,6 @@
 
 
 # Touring Foz
+
+## Descrição do Projeto
+<p align="center">Todas as informações turisticas de Foz em um só lugar</p>
