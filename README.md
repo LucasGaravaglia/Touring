@@ -6,7 +6,17 @@
   🚀 Hackatour Cataratas
 </h4>
 
-## Descrição do Projeto
-<p align="center">Todas as informações turisticas de Foz em um só lugar</p>
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Lucas-Garavaglia/Touring">
 
-https://img.shields.io/static/v1?label=tec&message=react-native&color=<COLOR>&style=<STYLE>&logo=<LOGO>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Lucas-Garavaglia/Touring">
+  
+  <a href="https://github.com/Lucas-Garavaglia/Touring/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Lucas-Garavaglia/Touring">
+  </a>
+
+  <a href="https://github.com/Lucas-Garavaglia/Touring/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/Lucas-Garavaglia/Touring">
+  </a>
+</p>
+
