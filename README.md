@@ -41,6 +41,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [MYSQL](https://www.mysql.com/)
 - [FIGMA](https://www.figma.com/)
 
+## Status
+
+Em desenvolvimento
+
 ## Projeto
 
-Sistema de provimento de informações turísticas de Foz do Iguaçu. Desenvolvido no Hackatour Cataratas 2020.
+Sistema de provimento de informações turísticas de Foz do Iguaçu. Desenvolvido iniciado no Hackatour Cataratas 2020.
