@@ -20,3 +20,13 @@
   </a>
 </p>
 
+<p align="center">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/Login.png" width="20%">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/Welcome.png" width="20%">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/PointsMap.png" width="20%">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/AttractionDetails.png" width="20%">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/Videos.png" width="20%">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/PointPage.png" width="20%">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/Videos.png" width="20%">
+  <img alt="Touring" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/Videos.png" width="20%">
+</p>
