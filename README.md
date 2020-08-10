@@ -2,10 +2,21 @@
     <img alt="Touring Foz" title="logo" src="https://github.com/Lucas-Garavaglia/Touring/blob/master/assets/logo.png" width="200px" />
 </h1>
 
+<h4 align="center">
+  🚀 Hackatour Cataratas
+</h4>
 
-<h1 align="center">Touring Foz</h1>
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Lucas-Garavaglia/Touring">
 
-## Descrição do Projeto
-<p align="center">Todas as informações turisticas de Foz em um só lugar</p>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Lucas-Garavaglia/Touring">
+  
+  <a href="https://github.com/Lucas-Garavaglia/Touring/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Lucas-Garavaglia/Touring">
+  </a>
 
-https://img.shields.io/static/v1?label=tec&message=react-native&color=<COLOR>&style=<STYLE>&logo=<LOGO>
+  <a href="https://github.com/Lucas-Garavaglia/Touring/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/Lucas-Garavaglia/Touring">
+  </a>
+</p>
+
