@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  🚀 Hackatour Cataratas
+  🚀 Hackatour Cataratas 2020
 </h4>
 
 <p align="center">
